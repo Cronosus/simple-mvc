@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GetTest {
 
-    public static final String JETTY_SERVER_URL = "http://localhost:8080/sample/index.html";
+    public static final String JETTY_SERVER_URL = "http://localhost:8080/sample";
     private WebDriver driver;
 
     @Before
