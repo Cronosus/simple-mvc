@@ -4,23 +4,39 @@
     <list default="true" id="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" name="Default" comment="" />
     <ignored path="simple-mvc.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/DispatchServletTest.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366126839038" ignored="false" />
+    <file path="/DispatchServletTest.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366127787624" ignored="false" />
     <file path="/GetTest.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366090753953" ignored="false" />
     <file path="/build.gradle" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366119627930" ignored="false" />
     <file path="/README.md" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366089817372" ignored="false" />
-    <file path="/ideas.md" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366091839078" ignored="false" />
+    <file path="/ideas.md" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366129430998" ignored="false" />
     <file path="/DispatchServlet.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366126639940" ignored="false" />
     <file path="/index.html" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366117933872" ignored="false" />
-    <file path="$PROJECT_DIR$/../simple-di/build.gradle" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366120794936" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/build.gradle" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366129586373" ignored="false" />
     <file path="$PROJECT_DIR$/../simple-di/repo/ivy-0.0.1-SNAPSHOT.xml" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366120587919" ignored="false" />
     <file path="/UserController.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366124377233" ignored="false" />
-    <file path="/fragment.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366126769327" ignored="false" />
+    <file path="/fragment.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128243557" ignored="false" />
     <file path="/Router.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366124984800" ignored="false" />
     <file path="/Path.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366124370072" ignored="false" />
     <file path="/RouterErrorException.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366124738997" ignored="false" />
     <file path="/RouterBuilderTest.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366125584978" ignored="false" />
     <file path="/RouterBuilder.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366126539921" ignored="false" />
     <file path="/a.dummy" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366126550337" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/test/java/com/thoughtworks/di/InjectorTest.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366129535420" ignored="false" />
+    <file path="/InjectorTest.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128117875" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/main/java/com/thoughtworks/di/core/Injector.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366129526945" ignored="false" />
+    <file path="/Injector.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366129285154" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/test/java/com/example/AnnotatedServiceImpl.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128035642" ignored="false" />
+    <file path="/AnnotatedServiceImpl.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128018420" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/main/java/com/thoughtworks/di/annotation/Component.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128102524" ignored="false" />
+    <file path="/Component.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128086582" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/main/java/com/thoughtworks/di/util/ClassUtil.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128208868" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/main/java/com/thoughtworks/di/utils/ClassUtil.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128472323" ignored="false" />
+    <file path="/ClassUtil.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128463307" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/main/java/com/thoughtworks/di/exception/LoadFailedException.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128256110" ignored="false" />
+    <file path="/LoadFailedException.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366128253338" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/main/java/com/thoughtworks/di/core/Binding.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366129108263" ignored="false" />
+    <file path="$PROJECT_DIR$/../simple-di/src/main/java/com/thoughtworks/di/core/BindingBuilder.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366129160172" ignored="false" />
+    <file path="/BindingBuilder.java" changelist="81dc28c9-41fe-4d00-9ced-1cae0fba44b4" time="1366129150560" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,41 +97,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DispatchServletTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/thoughtworks/mvc/core/DispatchServletTest.java">
+      <file leaf-file-name="Path.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc/annotations/Path.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="9" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.7794362">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DispatchServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc.core/DispatchServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="16" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RouterBuilderTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/thoughtworks/mvc/core/RouterBuilderTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="8" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RouterBuilder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc.core/RouterBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="9" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0">
+            <state line="8" column="35" selection-start="231" selection-end="266" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,7 +111,7 @@
       <file leaf-file-name="ClassUtil.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc/utils/ClassUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,40 +119,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImmutableSet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/com.google.guava/guava/14.0.1/source/169f11e28e3ed9a64e9fa895eaafb579e6a5aa6c/guava-14.0.1-sources.jar!/com/google/common/collect/ImmutableSet.java">
+      <file leaf-file-name="RouterBuilder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc.core/RouterBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="52" selection-start="3056" selection-end="3056" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImmutableCollection.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/com.google.guava/guava/14.0.1/source/169f11e28e3ed9a64e9fa895eaafb579e6a5aa6c/guava-14.0.1-sources.jar!/com/google/common/collect/ImmutableCollection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="20" selection-start="1563" selection-end="1563" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Collection.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/src.zip!/java/util/Collection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="17" selection-start="5453" selection-end="5453" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Router.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc.core/Router.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="16" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
+            <state line="23" column="20" selection-start="628" selection-end="636" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ideas.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ideas.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="22" selection-start="64" selection-end="64" vertical-scroll-proportion="0.030351438">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -183,7 +150,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/test/java/com/thoughtworks/mvc/integration/GetTest.java" />
-        <option value="$PROJECT_DIR$/src/ideas.md" />
         <option value="$PROJECT_DIR$/src/test/java/com/thoughtworks/mvc/integration/JettyServer.java" />
         <option value="$PROJECT_DIR$/src/test/webapp/WEB-INF/index.html" />
         <option value="$PROJECT_DIR$/src/test/webapp/index.html" />
@@ -198,6 +164,7 @@
         <option value="$PROJECT_DIR$/src/test/java/com/thoughtworks/mvc/core/RouterBuilderTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc.core/RouterBuilder.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/thoughtworks/mvc/core/DispatchServletTest.java" />
+        <option value="$PROJECT_DIR$/src/ideas.md" />
       </list>
     </option>
   </component>
@@ -271,102 +238,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simple-mvc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simple-mvc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simple-mvc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simple-mvc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simple-mvc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simple-mvc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simple-mvc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simple-mvc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -760,7 +631,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.53058106" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959481" sideWeight="0.53058106" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46941897" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -834,33 +705,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/local/Cellar/groovy/2.1.1/libexec/lib/servlet-api-2.4.jar!/javax/servlet/http/HttpServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="170" selection-end="170" vertical-scroll-proportion="0.16156463">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="43" selection-start="1450" selection-end="1489" vertical-scroll-proportion="0.5350734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/local/Cellar/groovy/2.1.1/libexec/lib/hamcrest-core-1.3.jar!/org/hamcrest/core/Is.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="47" selection-start="999" selection-end="999" vertical-scroll-proportion="0.7755102">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc/annotations/Path.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -915,15 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc/utils/ClassUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/thoughtworks/mvc/core/RouterBuilderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="8" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
@@ -933,28 +772,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc.core/RouterBuilder.java">
+    <entry file="jar:///usr/local/Cellar/groovy/2.1.1/libexec/lib/servlet-api-2.4.jar!/javax/servlet/http/HttpServlet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="9" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="6" column="22" selection-start="170" selection-end="170" vertical-scroll-proportion="-0.76">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc.core/DispatchServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="16" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
+        <state line="32" column="69" selection-start="997" selection-end="997" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/thoughtworks/mvc/core/DispatchServletTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="9" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.7794362">
+        <state line="48" column="54" selection-start="1483" selection-end="1521" vertical-scroll-proportion="0.44728434">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc/annotations/Path.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="35" selection-start="231" selection-end="266" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc/utils/ClassUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/thoughtworks/mvc.core/RouterBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="20" selection-start="628" selection-end="636" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ideas.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="22" selection-start="64" selection-end="64" vertical-scroll-proportion="0.030351438">
+          <folding />
         </state>
       </provider>
     </entry>
