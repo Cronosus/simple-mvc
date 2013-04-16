@@ -1,4 +1,4 @@
-package com.thoughtworks.mvc.integration;
+package functional.com.thoughtworks.mvc;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,17 +12,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GetTest {
 
-    public static final String JETTY_SERVER_URL = "http://localhost:8080/sample/";
+    public static final String JETTY_SERVER_URL = "http://localhost:8080/sample/index.html";
     private WebDriver driver;
 
     @Before
     public void setUp() {
+
         driver = new ChromeDriver();
     }
 
     @Test
     public void should_response_get_by_id_request() {
-        driver.get(JETTY_SERVER_URL + "user/1");
+        driver.get(JETTY_SERVER_URL);
         assertThat(getBody(), is("this is user with id 1"));
     }
 

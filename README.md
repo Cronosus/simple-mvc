@@ -16,3 +16,21 @@ Model-View-Controller是面向对象的圣杯。在桌面时代MVC充分展示�
 
 1. Functioning properly, and robust.
 2. No other library apart from guava, xunit, testing tools, and the template engine you chose.
+
+
+Tasks:
+1. integration tests
+    1.1 create a sample webapp that use my mvc framework.
+    1.2 launch this webapp and test if it works as expected.
+
+2. create dispatch servlet that dispatch request into controller based on url mapping
+    2.1 initialize this dispatch servlet
+    2.2 resolve controller from url mapping
+    2.3 extract parameters from request
+    2.4 get controller instance from ioc, and dispatch request to it
+    2.5 render view
+
+3. multi thread issues?
+
+4. exception handling?
+
