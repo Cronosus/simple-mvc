@@ -34,7 +34,7 @@ project.ext {
     seleniumWebdriverVersion = '2.32.0'
     servletVersion = '3.0.1'
     mokitoVersion = '1.9.5'
-    simpleDIVersion = '0.0.1-SNAPSHOT'
+    simpleDIVersion = '0.0.3-SNAPSHOT'
 }
 
 dependencies {

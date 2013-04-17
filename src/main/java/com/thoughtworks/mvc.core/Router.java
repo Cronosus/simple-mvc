@@ -1,21 +1,39 @@
 package com.thoughtworks.mvc.core;
 
+import com.thoughtworks.di.utils.ClassUtil;
+import com.thoughtworks.mvc.annotations.Path;
+
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Router {
 
-    private Map<String, Class<?>> routes;
+    private Map<String, Class<? extends Controller>> routes;
 
-    public Router(){
-        routes = new HashMap<>();
+    private Router(String packageName) {
+        this.routes = extractRouting(packageName);
     }
+
+    public static Router create(String packageName) {
+        return new Router(packageName);
+    }
+
 
     public Class classFor(String url) {
         return routes.get(url);
     }
 
-    public <T> void add(String url, Class<T> clazz) {
-        this.routes.put(url, clazz);
+    private Map<String, Class<? extends Controller>> extractRouting(String packageName) {
+        Map<String, Class<? extends Controller>> routes = new HashMap<>();
+
+        Collection<Class> allClasses = ClassUtil.getClassInfos(packageName);
+        for (Class<?> clazz : allClasses) {
+            if (clazz.isAnnotationPresent(Path.class)) {
+                routes.put(clazz.getAnnotation(Path.class).url(), (Class<? extends Controller>) clazz);
+            }
+        }
+        return routes;
     }
+
 }
