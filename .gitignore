@@ -2,4 +2,6 @@
 build/
 chromedriver.log
 out/
-
+*.iml
+*.ipr
+*.iws
