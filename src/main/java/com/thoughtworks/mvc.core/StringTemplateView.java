@@ -1,5 +1,9 @@
 package com.thoughtworks.mvc.core;
 
+import org.stringtemplate.v4.ST;
+import org.stringtemplate.v4.STGroup;
+import org.stringtemplate.v4.STGroupDir;
+
 public class StringTemplateView {
 
     private final String name;
@@ -9,6 +13,8 @@ public class StringTemplateView {
     }
 
     public String render() {
-        return null;
+        STGroup group = new STGroupDir("resources");
+        ST st = group.getInstanceOf(name);
+        return st.render();
     }
 }

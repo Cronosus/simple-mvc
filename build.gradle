@@ -34,7 +34,7 @@ project.ext {
   servletVersion = '3.0.1'
   mokitoVersion = '1.9.5'
   simpleDIVersion = '0.0.3-SNAPSHOT'
-  stringTemplateVersion = '3.2'
+  stringTemplateVersion = '4.0.2'
 }
 
 dependencies {
@@ -51,7 +51,7 @@ dependencies {
 
   testCompile(
       "junit:junit-dep:$junitVersion",
-      "org.hamcrest:hamcrest-mvc.core:$hamcrestVersion",
+      "org.hamcrest:hamcrest-core:$hamcrestVersion",
       "org.hamcrest:hamcrest-library:$hamcrestVersion",
       "org.seleniumhq.selenium:selenium-java:$seleniumWebdriverVersion",
       "org.mockito:mockito-all:$mokitoVersion"
