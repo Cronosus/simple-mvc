@@ -23,7 +23,7 @@ public class DispatchServletTest {
     private DispatchServlet servlet;
 
     @Before
-    public void setUp() {
+    public void setUp() throws ServletException {
         servlet = new DispatchServlet();
         ServletConfig config = mock(ServletConfig.class);
         when(config.getInitParameter("module-name")).thenReturn("com.example");

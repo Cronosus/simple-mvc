@@ -1,6 +1,7 @@
 package com.thoughtworks.mvc.core;
 
 import com.thoughtworks.di.core.Injector;
+import com.thoughtworks.mvc.exceptions.HandlerResolveException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
@@ -52,8 +53,10 @@ public class RequestHandlerResolver {
             Controller controller = (Controller) container.get(router.classFor(module));
             return new RequestHandler(controller, action);
         } else {
-            return null;
+            throw new HandlerResolveException("resolve request handler failed for " + request.getRequestURI());
         }
 
     }
+
+
 }

@@ -20,9 +20,9 @@ public class FreeMarkerViewTest {
         configuration.setDirectoryForTemplateLoading(new File("src/test/resources"));
         configuration.setObjectWrapper(new DefaultObjectWrapper());
 
-        FreeMarkerView view = new FreeMarkerView(configuration, "hello-world", new HashMap<>());
+        FreeMarkerView view = new FreeMarkerView(configuration, "hello-world");
         StringWriter writer = new StringWriter();
-        view.render(writer);
+        view.render(writer, new HashMap<>());
         assertThat(writer.getBuffer().toString(), equalTo("hello world"));
     }
 }
