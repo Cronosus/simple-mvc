@@ -1,5 +1,7 @@
 package com.thoughtworks.mvc.core;
 
+import com.thoughtworks.mvc.exceptions.RequestHandleException;
+
 import java.lang.reflect.Method;
 
 public class RequestHandler {
@@ -20,16 +22,11 @@ public class RequestHandler {
     }
 
     public String handle() {
-        Method method = null;
-        String viewName = null;
         try {
-            method = controller.getClass().getDeclaredMethod(action, new Class<?>[0]);
+            Method method = controller.getClass().getDeclaredMethod(action, new Class<?>[0]);
+            return (String) method.invoke(controller);
         } catch (Exception e) {
+            throw new RequestHandleException(e);
         }
-        try {
-            viewName = (String) method.invoke(controller);
-        } catch (Exception e) {
-        }
-        return viewName;
     }
 }

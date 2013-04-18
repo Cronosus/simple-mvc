@@ -6,7 +6,11 @@ import org.junit.Test;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -38,7 +42,6 @@ public class DispatchServletTest {
     }
 
     @Test
-    public void should_create_request_resolver(){
-        assertThat(servlet.getRequestRequestHandlerResolver(), notNullValue());
+    public void should_render_requested_page() throws ServletException, IOException {
     }
 }
