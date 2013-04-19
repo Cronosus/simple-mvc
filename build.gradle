@@ -3,7 +3,6 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'signing'
 apply plugin: 'java'
-apply plugin: 'jetty'
 
 //source compatibility
 sourceCompatibility = 1.8
@@ -69,11 +68,4 @@ task sourcesJar(type: Jar) {
 artifacts {
   archives jar
   archives sourcesJar
-}
-
-
-jettyRun {
-  contextPath = '/sample'
-  httpPort = 8080
-  webAppSourceDirectory = file('src/test/webapp')
 }
