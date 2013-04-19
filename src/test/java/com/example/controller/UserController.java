@@ -3,7 +3,6 @@ package com.example.controller;
 import com.thoughtworks.di.annotation.Component;
 import com.thoughtworks.mvc.annotations.Action;
 import com.thoughtworks.mvc.annotations.Controller;
-import com.thoughtworks.mvc.annotations.Param;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +18,14 @@ public class UserController implements com.thoughtworks.mvc.core.Controller {
         return modelMap;
     }
 
-    @Action(method = "GET")
-    public String show(@Param String id) {
+    @Action
+    public String show(String id) {
+        this.modelMap = new HashMap<>();
+        return "show";
+    }
+
+    @Action(url = "create")
+    public String createUser() {
         this.modelMap = new HashMap<>();
         return "show";
     }

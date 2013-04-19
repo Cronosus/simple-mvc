@@ -28,7 +28,7 @@ public class DispatchServlet extends HttpServlet {
 
         this.controllerContainer = Injector.create(packageName);
         this.router = Router.create(packageName);
-        this.requestRequestHandlerResolver = new RequestHandlerResolver(controllerContainer, router);
+        this.requestRequestHandlerResolver = new RequestHandlerResolver(controllerContainer, packageName);
 
         String templatePath = config.getInitParameter("template-path");
         if (null == templatePath) {
