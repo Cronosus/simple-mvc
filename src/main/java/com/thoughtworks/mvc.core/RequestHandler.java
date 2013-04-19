@@ -1,32 +1,32 @@
 package com.thoughtworks.mvc.core;
 
-import com.thoughtworks.mvc.exceptions.RequestHandleException;
+import com.thoughtworks.utils.Lang;
 
 import java.lang.reflect.Method;
 
 public class RequestHandler {
-    private Controller controller;
-    private String action;
+    private Object controller;
+    private Method action;
 
-    public RequestHandler(Controller controller, String action) {
+    public RequestHandler(Object controller, Method action) {
         this.controller = controller;
         this.action = action;
     }
 
-    public Controller getController() {
+
+    public Object getController() {
         return controller;
     }
 
-    public String getAction() {
+    public Method getAction() {
         return action;
     }
 
     public String handle() {
         try {
-            Method method = controller.getClass().getDeclaredMethod(action, new Class<?>[0]);
-            return (String) method.invoke(controller);
+            return (String) action.invoke(controller);
         } catch (Exception e) {
-            throw new RequestHandleException(e);
+            throw Lang.makeThrow("Invoking action failed %s", e.getMessage());
         }
     }
 }

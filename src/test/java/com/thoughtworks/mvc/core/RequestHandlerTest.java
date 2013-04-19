@@ -4,12 +4,14 @@ import com.example.controller.UserController;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Method;
+
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
 public class RequestHandlerTest {
 
-    private Controller controller;
+    private Object controller;
 
     @Before
     public void setUp() {
@@ -17,16 +19,10 @@ public class RequestHandlerTest {
     }
 
     @Test
-    public void should_return_view_name() {
-        RequestHandler handler = new RequestHandler(controller, "show");
+    public void should_return_view_name() throws NoSuchMethodException {
+        Method index = UserController.class.getDeclaredMethod("index");
+        RequestHandler handler = new RequestHandler(controller, index);
         String viewName = handler.handle();
         assertThat(viewName, notNullValue());
-    }
-
-    @Test
-    public void should_set_model_in_controller() {
-        RequestHandler handler = new RequestHandler(controller, "show");
-        handler.handle();
-        assertThat(controller.getModelMap(), notNullValue());
     }
 }

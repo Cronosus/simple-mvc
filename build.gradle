@@ -73,7 +73,7 @@ artifacts {
 
 
 jettyRun {
-  contextPath = 'sample'
+  contextPath = '/sample'
   httpPort = 8080
   webAppSourceDirectory = file('src/test/webapp')
 }
