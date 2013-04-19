@@ -20,6 +20,6 @@ public class UserController implements com.thoughtworks.mvc.core.Controller {
 
     @Action(url = "create")
     public String createUser() {
-        return "show";
+        return "create";
     }
 }
