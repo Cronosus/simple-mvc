@@ -1,15 +1,16 @@
 package com.example.controller;
 
 import com.thoughtworks.di.annotation.Component;
-import com.thoughtworks.mvc.annotations.Path;
-import com.thoughtworks.mvc.core.Controller;
+import com.thoughtworks.mvc.annotations.Action;
+import com.thoughtworks.mvc.annotations.Controller;
+import com.thoughtworks.mvc.annotations.Param;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Path(url = "/user")
 @Component
-public class UserController implements Controller {
+@Controller(url = "/user")
+public class UserController implements com.thoughtworks.mvc.core.Controller {
 
     private Map<String, Object> modelMap;
 
@@ -18,7 +19,8 @@ public class UserController implements Controller {
         return modelMap;
     }
 
-    public String show() {
+    @Action(method = "GET")
+    public String show(@Param String id) {
         this.modelMap = new HashMap<>();
         return "show";
     }

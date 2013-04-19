@@ -1,10 +1,16 @@
 package com.thoughtworks.mvc.core;
 
 import com.thoughtworks.di.core.Injector;
-import com.thoughtworks.mvc.exceptions.HandlerResolveException;
+import com.thoughtworks.di.utils.ClassUtil;
+import com.thoughtworks.mvc.annotations.Action;
+import com.thoughtworks.mvc.annotations.Controller;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.regex.Matcher;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class RequestHandlerResolver {
@@ -15,47 +21,37 @@ public class RequestHandlerResolver {
     private static final Pattern MEMBER_URL_PATTERN = Pattern.compile("(/\\w+)/(\\d+)");
 
     private final Injector container;
-    private final Router router;
+    private final String packageName;
 
-    public RequestHandlerResolver(Injector container, Router router) {
+    public RequestHandlerResolver(Injector container, String packageName) {
         this.container = container;
-        this.router = router;
+        this.packageName = packageName;
     }
 
     public RequestHandler resolve(HttpServletRequest request) {
+        request.getRequestURI();
+        request.getMethod();
+        request.getParameterNames();
 
+        return null;
+    }
 
-        String action = "";
-        String module = "";
-        String id = "";
+    private Map<String, Class<? extends com.thoughtworks.mvc.core.Controller>> extractRouting(String packageName) {
+        Map<String, Class<? extends com.thoughtworks.mvc.core.Controller>> routes = new HashMap<>();
 
-        Matcher collectionUrlMatcher = COLLECTION_URL_PATTERN.matcher(request.getRequestURI());
-        Matcher newUrlMatcher = NEW_URL_PATTERN.matcher(request.getRequestURI());
-        Matcher editUrlMatcher = EDIT_URL_PATTERN.matcher(request.getRequestURI());
-        Matcher memberUrlMatcher = MEMBER_URL_PATTERN.matcher(request.getRequestURI());
+        Collection<Class> allClasses = ClassUtil.getClassInfos(packageName);
+        for (Class<?> clazz : allClasses) {
+            if (clazz.isAnnotationPresent(Controller.class)) {
+                String url = clazz.getAnnotation(Controller.class).url();
 
-        if (collectionUrlMatcher.matches()) {
-            module = collectionUrlMatcher.group(1);
-            action = "index";
-        } else if (newUrlMatcher.matches()) {
-            module = newUrlMatcher.group(1);
-            action = "new";
-        } else if (editUrlMatcher.matches()) {
-            module = editUrlMatcher.group(1);
-            action = "edit";
-        } else if (memberUrlMatcher.matches()) {
-            module = memberUrlMatcher.group(1);
-            id = memberUrlMatcher.group(2);
-            action = "show";
+                for(Method method : Arrays.asList(clazz.getDeclaredMethods())){
+                    if (method.isAnnotationPresent(Action.class)){
+
+                    };
+                }
+            }
         }
-
-        if (!module.isEmpty() && !action.isEmpty()) {
-            Controller controller = (Controller) container.get(router.classFor(module));
-            return new RequestHandler(controller, action);
-        } else {
-            throw new HandlerResolveException("resolve request handler failed for " + request.getRequestURI());
-        }
-
+        return routes;
     }
 
 

@@ -4,6 +4,7 @@ import com.example.controller.UserController;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class RouterTest {
@@ -13,4 +14,6 @@ public class RouterTest {
         Router router = Router.create("com.example");
         assertThat(router.classFor("/user"), equalTo(UserController.class));
     }
+
+
 }

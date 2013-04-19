@@ -2,6 +2,7 @@ package com.thoughtworks.mvc.core;
 
 import com.example.controller.UserController;
 import com.thoughtworks.di.core.Injector;
+import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,14 +19,12 @@ import static org.mockito.Mockito.when;
 public class RequestHandlerResolverTest {
 
     private Injector container;
-    private Router router;
     private RequestHandlerResolver resolver;
 
     @Before
     public void setUp() {
         container = Injector.create("com.example");
-        router = Router.create("com.example");
-        resolver = new RequestHandlerResolver(container, router);
+        resolver = new RequestHandlerResolver(container, "com.example");
     }
 
     @Test
