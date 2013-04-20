@@ -2,7 +2,7 @@ package com.thoughtworks.mvc.core;
 
 import java.lang.reflect.Method;
 
-public class ActionInfo<T> {
+public class ActionInfo<T extends Controller> {
     private final Class<T> controller;
     private Method method;
 

@@ -5,28 +5,26 @@ import com.thoughtworks.utils.Lang;
 import java.lang.reflect.Method;
 
 public class RequestHandler {
-    private Object controller;
+    private FreeMarkerViewResolver viewResolver;
+    private Controller controller;
     private Method action;
 
-    public RequestHandler(Object controller, Method action) {
+    public RequestHandler(FreeMarkerViewResolver viewResolver, Controller controller, Method action) {
+        this.viewResolver = viewResolver;
         this.controller = controller;
         this.action = action;
     }
 
-
-    public Object getController() {
-        return controller;
-    }
-
-    public Method getAction() {
-        return action;
-    }
-
-    public String handle() {
+    public ModelAndView handle() {
+        String viewName;
         try {
-            return (String) action.invoke(controller);
+            viewName =  (String) action.invoke(controller);
         } catch (Exception e) {
             throw Lang.makeThrow("Invoking action failed %s", e.getMessage());
         }
+        FreeMarkerView view = viewResolver.resolve(viewName);
+
+
+        return new ModelAndView(view, controller.getModelMap());
     }
 }

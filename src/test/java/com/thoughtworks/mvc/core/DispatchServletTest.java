@@ -29,8 +29,4 @@ public class DispatchServletTest {
         assertThat(servlet.getControllerContainer(), notNullValue());
     }
 
-    @Test
-    public void should_create_view_resolver_after_initialized() throws ServletException{
-        assertThat(servlet.getViewResolver(), notNullValue());
-    }
 }

@@ -1,0 +1,1 @@
+the variable is: <#list vs as v >${v} </#list>

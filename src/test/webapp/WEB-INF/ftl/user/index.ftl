@@ -1,1 +1,1 @@
-this is the user index page
+this is the user index page, there are ${total} users

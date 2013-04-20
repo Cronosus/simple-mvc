@@ -1,5 +1,6 @@
 package com.thoughtworks.utils;
 
+import com.example.controller.UserController;
 import com.thoughtworks.mvc.annotations.Action;
 import com.thoughtworks.mvc.annotations.Controller;
 
@@ -26,15 +27,6 @@ public class Lang {
         return false;
     }
 
-    private static boolean isAvailableModuleClass(Class<?> clazz) {
-        int classModify = clazz.getModifiers();
-        if (!Modifier.isPublic(classModify)
-                || Modifier.isAbstract(classModify)
-                || Modifier.isInterface(classModify))
-            return false;
-        return true;
-    }
-
     public static List<Method> actionMethods(Class<?> clazz) {
         List<Method> actionMethods = new ArrayList<>();
         for (Method method : clazz.getDeclaredMethods()) {
@@ -45,14 +37,15 @@ public class Lang {
         return actionMethods;
     }
 
-    /**
-     * 根据格式化字符串，生成运行时异常
-     *
-     * @param format 格式
-     * @param args   参数
-     * @return 运行时异常
-     */
     public static RuntimeException makeThrow(String format, Object... args) {
         return new RuntimeException(String.format(format, args));
+    }
+
+    public static Method methodFor(Class<UserController> clazz, String name) {
+        try {
+            return clazz.getDeclaredMethod(name);
+        } catch (NoSuchMethodException e) {
+            throw makeThrow("can not find method %s for class %s", clazz.getCanonicalName(), name);
+        }
     }
 }
