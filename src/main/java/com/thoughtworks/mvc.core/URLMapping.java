@@ -2,7 +2,6 @@ package com.thoughtworks.mvc.core;
 
 import com.thoughtworks.di.utils.ClassUtil;
 import com.thoughtworks.mvc.annotation.Path;
-import com.thoughtworks.mvc.annotations.*;
 import com.thoughtworks.utils.Lang;
 import com.thoughtworks.utils.StringUtils;
 

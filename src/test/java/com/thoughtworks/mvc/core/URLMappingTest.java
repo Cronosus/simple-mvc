@@ -31,7 +31,7 @@ public class URLMappingTest {
 
         Method expectedMethod = UserController.class.getDeclaredMethod("show", new Class[]{String.class});
 
-        assertThat(actionInfo.getController(), equalTo(UserController.class));
+        assertThat((Class<UserController>) actionInfo.getController(), equalTo(UserController.class));
         assertThat(actionInfo.getMethod(), equalTo(expectedMethod));
     }
 
@@ -41,7 +41,7 @@ public class URLMappingTest {
 
         Method expectedMethod = UserController.class.getDeclaredMethod("createUser");
 
-        assertThat(actionInfo.getController(), equalTo(UserController.class));
+        assertThat((Class<UserController>) actionInfo.getController(), equalTo(UserController.class));
         assertThat(actionInfo.getMethod(), equalTo(expectedMethod));
     }
 

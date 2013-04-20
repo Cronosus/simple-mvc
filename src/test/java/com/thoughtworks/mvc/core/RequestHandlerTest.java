@@ -14,6 +14,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -28,7 +29,7 @@ public class RequestHandlerTest {
         controller = new UserController();
         viewResolver = mock(FreeMarkerViewResolver.class);
         expectedView = mock(View.class);
-        when(viewResolver.resolve("index")).thenReturn(expectedView);
+        when(viewResolver.resolve(anyString())).thenReturn(expectedView);
     }
 
     @Test
