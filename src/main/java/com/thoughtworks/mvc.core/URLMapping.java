@@ -1,24 +1,18 @@
 package com.thoughtworks.mvc.core;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.reflect.ClassPath;
-import com.thoughtworks.di.exception.LoadFailedException;
 import com.thoughtworks.di.utils.ClassUtil;
-
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.annotations.*;
 import com.thoughtworks.utils.Lang;
-import com.thoughtworks.mvc.annotations.Controller;
 import com.thoughtworks.utils.StringUtils;
 
 import javax.servlet.ServletContext;
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class URLMapping {
 
@@ -39,10 +33,10 @@ public class URLMapping {
 
         for (Class<?> clazz : allClasses) {
             if (Lang.isController(clazz)) {
-                Controller controller = clazz.getAnnotation(Controller.class);
+                Path modulePath = clazz.getAnnotation(Path.class);
                 for (Method method : Lang.actionMethods(clazz)) {
-                    Action action = method.getAnnotation(Action.class);
-                    mapping.add(clazz, method, action, controller);
+                    Path actionPath = method.getAnnotation(Path.class);
+                    mapping.add(clazz, method, actionPath, modulePath);
                 }
             }
         }
@@ -66,7 +60,7 @@ public class URLMapping {
     }
 
 
-    private void add(Class<?> clazz, Method method, Action action, Controller controller) {
+    private void add(Class<?> clazz, Method method, Path action, Path controller) {
         addController(controller, clazz);
 
         ControllerMappingEntry controllerMappingEntry = this.moduleFor(controller.url());
@@ -78,7 +72,7 @@ public class URLMapping {
         return controllerMappingMap.get(StringUtils.stripLeadSlash(controllerUrl));
     }
 
-    private void addController(Controller controller, Class<?> clazz) {
+    private void addController(Path controller, Class<?> clazz) {
         String controllerUrl = StringUtils.stripLeadSlash(controller.url());
         if (controllerMappingMap.get(controllerUrl) == null) {
             controllerMappingMap.put(controllerUrl, new ControllerMappingEntry(clazz));
@@ -93,7 +87,7 @@ public class URLMapping {
             this.controller = controller;
         }
 
-        private void addAction(Action action, Method method) {
+        private void addAction(Path action, Method method) {
             String actionUrl = StringUtils.stripLeadSlash(action.url());
             if (actionUrl.isEmpty()) {
                 actionUrl = method.getName();

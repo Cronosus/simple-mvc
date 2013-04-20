@@ -1,11 +1,8 @@
 package com.thoughtworks.utils;
 
-import com.example.controller.UserController;
-import com.thoughtworks.mvc.annotations.Action;
-import com.thoughtworks.mvc.annotations.Controller;
+import com.thoughtworks.mvc.annotation.Path;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +13,12 @@ public class Lang {
     }
 
     private static boolean withControllerAnnotation(Class<?> clazz) {
-        return clazz.isAnnotationPresent(Controller.class);
+        return clazz.isAnnotationPresent(Path.class);
     }
 
     private static boolean hasActionMethod(Class<?> clazz) {
         for (Method method : clazz.getMethods()) {
-            if (method.isAnnotationPresent(Action.class))
+            if (method.isAnnotationPresent(Path.class))
                 return true;
         }
         return false;
@@ -30,7 +27,7 @@ public class Lang {
     public static List<Method> actionMethods(Class<?> clazz) {
         List<Method> actionMethods = new ArrayList<>();
         for (Method method : clazz.getDeclaredMethods()) {
-            if (method.isAnnotationPresent(Action.class)) {
+            if (method.isAnnotationPresent(Path.class)) {
                 actionMethods.add(method);
             }
         }
@@ -41,7 +38,7 @@ public class Lang {
         return new RuntimeException(String.format(format, args));
     }
 
-    public static Method methodFor(Class<UserController> clazz, String name) {
+    public static Method methodFor(Class<?> clazz, String name) {
         try {
             return clazz.getDeclaredMethod(name);
         } catch (NoSuchMethodException e) {

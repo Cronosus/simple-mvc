@@ -5,8 +5,8 @@ apply plugin: 'signing'
 apply plugin: 'java'
 
 //source compatibility
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 version = '0.0.1-SNAPSHOT'
 group = 'com.github.nicholasren'

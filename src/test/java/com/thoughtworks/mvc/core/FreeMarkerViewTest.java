@@ -31,7 +31,7 @@ public class FreeMarkerViewTest {
     @Test
     public void should_render_content_of_template() throws Exception {
         FreeMarkerView view = new FreeMarkerView(configuration, "hello-world");
-        view.render(writer, new HashMap<>());
+        view.render(writer, new HashMap<String, Object>());
         assertThat(getActual(), equalTo("hello world"));
     }
 

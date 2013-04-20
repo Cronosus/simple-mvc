@@ -22,6 +22,8 @@ Tasks:
 1. integration tests
     1.1 create a sample webapp that use my mvc framework.       DONE
     1.2 launch this webapp and test if it works as expected.    DONE
+    1.3 make this sample webapp as a sub project.
+    1.4 deploy this webapp to jetty.
 
 2. create dispatch servlet that dispatch request into controller based on url mapping
     2.1 initialize this dispatch servlet DONE
@@ -29,6 +31,7 @@ Tasks:
     2.3 extract parameters from request
     2.4 get controller instance from ioc, and dispatch request to it DONE
     2.5 render view  DONE
+
 
 3. multi thread issues?
 

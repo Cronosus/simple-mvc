@@ -1,6 +1,6 @@
 package com.thoughtworks.mvc.core;
 
-import com.thoughtworks.mvc.exceptions.RenderViewException;
+import com.thoughtworks.utils.Lang;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -25,7 +25,7 @@ public class FreeMarkerView implements View {
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
-            throw new RenderViewException(e);
+            throw Lang.makeThrow("render view error %s", e.getMessage());
         }
     }
 
