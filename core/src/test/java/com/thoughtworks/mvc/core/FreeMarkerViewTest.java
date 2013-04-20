@@ -23,7 +23,7 @@ public class FreeMarkerViewTest {
     @Before
     public void setUp() throws IOException {
         configuration = new Configuration();
-        configuration.setDirectoryForTemplateLoading(new File("src/test/resources"));
+        configuration.setDirectoryForTemplateLoading(new File("core/src/test/resources"));
         configuration.setObjectWrapper(new DefaultObjectWrapper());
         writer = new StringWriter();
     }

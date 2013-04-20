@@ -1,6 +1,6 @@
-package functional.com.thoughtworks.mvc;
+package mvc.functional;
 
-import functional.com.thoughtworks.main.JettyServer;
+import com.thoughtworks.main.JettyServer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class GetTest {
     @Before
     public void setUp() {
 
-        JettyServer.start();
+        JettyServer.start("sample/src/main/webapp", "/sample");
         driver = new ChromeDriver();
 
     }

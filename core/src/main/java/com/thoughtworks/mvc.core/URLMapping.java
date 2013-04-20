@@ -1,11 +1,14 @@
 package com.thoughtworks.mvc.core;
 
+import com.google.common.collect.ImmutableSet;
+import com.google.common.reflect.ClassPath;
 import com.thoughtworks.di.utils.ClassUtil;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.utils.Lang;
 import com.thoughtworks.utils.StringUtils;
 
 import javax.servlet.ServletContext;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,6 +30,13 @@ public class URLMapping {
     public static URLMapping load(String packageName, ServletContext servletContext) {
 
         URLMapping mapping = new URLMapping(servletContext);
+
+        ImmutableSet<ClassPath.ClassInfo> alxx;
+        try {
+            alxx = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClassesRecursive(packageName);
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
 
         Collection<Class> allClasses = ClassUtil.getClassInfos(packageName);
 

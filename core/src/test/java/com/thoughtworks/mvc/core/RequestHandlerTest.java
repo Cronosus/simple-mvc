@@ -1,18 +1,14 @@
 package com.thoughtworks.mvc.core;
 
-import com.example.controller.UserController;
 import com.thoughtworks.utils.Lang;
-import org.hamcrest.Matcher;
+import com.example.controller.UserController;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;

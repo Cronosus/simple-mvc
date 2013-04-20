@@ -1,4 +1,4 @@
-package functional.com.thoughtworks.main;
+package com.thoughtworks.main;
 
 import com.thoughtworks.utils.Lang;
 import org.eclipse.jetty.server.Server;
@@ -10,15 +10,15 @@ public class JettyServer {
 
     private static Server server;
 
-    public static void start() {
+    public static void start(String webAppPath, String contextPath) {
         try {
             server = new Server(8080);
-            WebAppContext webAppContext = new WebAppContext(new File("src/test/webapp").getAbsolutePath(), "/sample");
+            WebAppContext webAppContext = new WebAppContext(new File(webAppPath).getAbsolutePath(), contextPath);
             server.setHandler(webAppContext);
 
             server.start();
         } catch (Exception ex) {
-            System.err.println(ex);
+            throw Lang.makeThrow("start server failed %s", ex.getMessage());
         }
     }
 
@@ -31,6 +31,6 @@ public class JettyServer {
     }
 
     public static void main(String[] args) {
-        start();
+        start(args[0], args[1]);
     }
 }
