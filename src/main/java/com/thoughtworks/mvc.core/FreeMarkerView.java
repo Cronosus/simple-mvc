@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Map;
 
-public class FreeMarkerView {
+public class FreeMarkerView implements View {
 
     public static final String SUFFIX = ".ftl";
     private final String name;

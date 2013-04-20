@@ -22,8 +22,7 @@ public class RequestHandler {
         } catch (Exception e) {
             throw Lang.makeThrow("Invoking action failed %s", e.getMessage());
         }
-        FreeMarkerView view = viewResolver.resolve(viewName);
-
+        View view = viewResolver.resolve(viewName);
 
         return new ModelAndView(view, controller.getModelMap());
     }

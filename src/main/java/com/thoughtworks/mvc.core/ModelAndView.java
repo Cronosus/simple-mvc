@@ -6,15 +6,11 @@ import java.util.Map;
 
 public class ModelAndView {
     private final Map<String, Object> model;
-    private final FreeMarkerView view;
+    private final View view;
 
-    public ModelAndView(FreeMarkerView view, Map<String, Object> model) {
+    public ModelAndView(View view, Map<String, Object> model) {
         this.view = view;
         this.model = model;
-    }
-
-    public String getViewName() {
-        return view.getName();
     }
 
     public Map<String, Object> getModel() {
@@ -23,5 +19,9 @@ public class ModelAndView {
 
     public void render(PrintWriter writer) throws IOException {
         this.view.render(writer, this.model);
+    }
+
+    public View getView() {
+        return view;
     }
 }

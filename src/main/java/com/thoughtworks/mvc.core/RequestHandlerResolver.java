@@ -4,7 +4,6 @@ import com.thoughtworks.di.core.Injector;
 import com.thoughtworks.utils.Lang;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 public class RequestHandlerResolver {
@@ -16,7 +15,7 @@ public class RequestHandlerResolver {
     private RequestHandlerResolver(Injector container, String packageName, ServletConfig servletConfig) {
         this.container = container;
         this.urlMapping = URLMapping.load(packageName, servletConfig.getServletContext());
-        this.viewResolver = FreeMarkerViewResolver.create(servletConfig.getServletContext(), servletConfig.getInitParameter("template-path"));
+        this.viewResolver = FreeMarkerViewResolver.create(servletConfig);
     }
 
     public static RequestHandlerResolver create(Injector container, String packageName, ServletConfig servletConfig) {

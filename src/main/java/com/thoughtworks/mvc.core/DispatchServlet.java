@@ -19,18 +19,14 @@ public class DispatchServlet extends HttpServlet {
     public void init(ServletConfig config) {
 
         String packageName = config.getInitParameter("module-name");
+
+
         if (null == packageName) {
             throw Lang.makeThrow("module name can not be empty");
         }
 
-        String templatePath = config.getInitParameter("template-path");
-        if (null == templatePath) {
-            throw Lang.makeThrow("template path can not be empty");
-        }
-
         this.controllerContainer = Injector.create(packageName);
         this.requestRequestHandlerResolver = RequestHandlerResolver.create(controllerContainer, packageName, config);
-
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
