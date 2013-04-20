@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5">
-
-    <display-name>simple-MVC sample Application</display-name>
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <display-name>simple-mvc sample Application</display-name>
     <description>
         This is a simple web application based on simple-mvc
     </description>
 
     <servlet>
-        <servlet-name>DispatchServlet</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>com.thoughtworks.mvc.core.DispatchServlet</servlet-class>
         <init-param>
             <param-name>module-name</param-name>
@@ -25,7 +22,7 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>DispatchServlet</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
