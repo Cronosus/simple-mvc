@@ -21,12 +21,17 @@ public class UserController implements com.thoughtworks.mvc.core.Controller {
 
     @Action
     public String show(String id) {
-        return "show";
+        return "user/show";
     }
 
     @Action(url = "create")
     public String createUser() {
-        return "create";
+        return "user/create";
+    }
+
+    @Action(url = "new")
+    public String fresh() {
+        return "user/new";
     }
 
     @Override

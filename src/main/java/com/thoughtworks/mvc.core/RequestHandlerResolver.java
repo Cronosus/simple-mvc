@@ -29,8 +29,7 @@ public class RequestHandlerResolver {
             throw Lang.makeThrow("can not find action for requested URI %s.", request.getRequestURI());
         }
 
-        RequestHandler handler = new RequestHandler(viewResolver, (Controller) container.get(actionInfo.getController()),
+        return new RequestHandler(viewResolver, (Controller) container.get(actionInfo.getController()),
                 actionInfo.getMethod());
-        return handler;
     }
 }

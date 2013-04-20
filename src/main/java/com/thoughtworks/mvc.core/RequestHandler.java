@@ -26,4 +26,12 @@ public class RequestHandler {
 
         return new ModelAndView(view, controller.getModelMap());
     }
+
+    public Controller getController() {
+        return controller;
+    }
+
+    public String getActionName() {
+        return action.getName();
+    }
 }
