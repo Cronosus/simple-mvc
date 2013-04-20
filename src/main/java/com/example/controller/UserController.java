@@ -2,10 +2,7 @@ package com.example.controller;
 
 import com.thoughtworks.di.annotation.Component;
 import com.thoughtworks.mvc.annotation.Path;
-<<<<<<< HEAD
-=======
 import com.thoughtworks.mvc.core.Controller;
->>>>>>> switch to java 7
 
 import java.util.HashMap;
 import java.util.Map;
