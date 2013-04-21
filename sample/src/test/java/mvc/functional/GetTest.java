@@ -19,7 +19,7 @@ public class GetTest {
     @Before
     public void setUp() {
 
-        JettyServer.start("sample/src/main/webapp", "/sample");
+        JettyServer.start("src/main/webapp", "/sample");
         driver = new ChromeDriver();
 
     }

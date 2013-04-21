@@ -31,22 +31,17 @@ public class URLMapping {
 
         URLMapping mapping = new URLMapping(servletContext);
 
-        try {
-            ClassLoader.getSystemClassLoader().loadClass("com.example.controller.UserController");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-//        Collection<Class> allClasses = ClassUtil.getClassInfos(packageName);
+        Collection<Class> allClasses = ClassUtil.getClassInfos(packageName);
 
-//        for (Class<?> clazz : allClasses) {
-//            if (Lang.isController(clazz)) {
-//                Path modulePath = clazz.getAnnotation(Path.class);
-//                for (Method method : Lang.actionMethods(clazz)) {
-//                    Path actionPath = method.getAnnotation(Path.class);
-//                    mapping.add(clazz, method, actionPath, modulePath);
-//                }
-//            }
-//        }
+        for (Class<?> clazz : allClasses) {
+            if (Lang.isController(clazz)) {
+                Path modulePath = clazz.getAnnotation(Path.class);
+                for (Method method : Lang.actionMethods(clazz)) {
+                    Path actionPath = method.getAnnotation(Path.class);
+                    mapping.add(clazz, method, actionPath, modulePath);
+                }
+            }
+        }
         return mapping;
     }
 
