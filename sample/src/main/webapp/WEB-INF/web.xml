@@ -13,7 +13,7 @@
         <servlet-class>com.thoughtworks.mvc.core.DispatchServlet</servlet-class>
         <init-param>
             <param-name>module-name</param-name>
-            <param-value>com.example</param-value>
+            <param-value>com.petclinic</param-value>
         </init-param>
         <init-param>
             <param-name>template-path</param-name>

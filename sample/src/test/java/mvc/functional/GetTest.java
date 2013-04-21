@@ -26,8 +26,8 @@ public class GetTest {
 
     @Test
     public void should_response_get_by_id_request() {
-        driver.get(JETTY_SERVER_URL + "/user/index");
-        assertThat(getBody(), is("this is the user index page, there are 5 users"));
+        driver.get(JETTY_SERVER_URL + "/pet/index");
+        assertThat(getBody(), is("this is the pet index page, there are 5 pets"));
     }
 
     @After

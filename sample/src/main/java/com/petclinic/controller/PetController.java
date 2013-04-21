@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.petclinic.controller;
 
 import com.thoughtworks.di.annotation.Component;
 import com.thoughtworks.mvc.annotation.Path;
@@ -8,30 +8,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@Path(url = "/user")
-public class UserController implements Controller {
+@Path(url = "/pet")
+public class PetController implements Controller {
 
     private Map<String, Object> modelMap = new HashMap<>();
 
     @Path
     public String index() {
         modelMap.put("total", 5);
-        return "user/index";
+        return "pet/index";
     }
 
     @Path
     public String show(String id) {
-        return "user/show";
+        return "pet/show";
     }
 
     @Path(url = "create")
     public String createUser() {
-        return "user/create";
+        return "pet/create";
     }
 
     @Path(url = "new")
     public String fresh() {
-        return "user/new";
+        return "pet/new";
     }
 
     @Override
