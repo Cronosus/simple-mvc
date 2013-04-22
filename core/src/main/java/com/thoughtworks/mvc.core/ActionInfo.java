@@ -11,7 +11,7 @@ public class ActionInfo<T extends Controller> {
         this.method = method;
     }
 
-    public Class<T> getController() {
+    public Class<T> getControllerClass() {
         return this.controller;
     }
 

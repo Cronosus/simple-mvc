@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -70,6 +71,7 @@ public class RequestHandlerResolverTest {
 
         assertThat(requestHandler.getController(), instanceOf(UserController.class));
         assertThat(requestHandler.getActionName(), equalTo("show"));
+
     }
 
     @Test
