@@ -33,7 +33,7 @@ public class GetTest {
     @Test
     public void should_response_to_get_request_with_params() {
         driver.get(JETTY_SERVER_URL + "/pet/show?id=1");
-        assertThat(getBody(), is("this is the detail page for pet with name doudou"));
+        assertThat(getBody(), is("this is the detail page for pet with name Doudou"));
     }
 
     @After
