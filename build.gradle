@@ -2,7 +2,6 @@ allprojects {
   apply plugin: 'idea'
   apply plugin: 'maven'
   apply plugin: 'java'
-  apply plugin: 'jetty'
 
   sourceCompatibility = 1.7
   targetCompatibility = 1.7
@@ -37,11 +36,11 @@ project(":core") {
   dependencies {
     compile(
         "com.google.guava:guava:$guavaVersion",
-        "com.github.nicholasren:simple-di:$simpleDIVersion",
         "org.freemarker:freemarker:$freemarkerVersion",
         "org.eclipse.jetty:jetty-server:$jettyVersion",
         "org.eclipse.jetty:jetty-servlet:$jettyVersion",
-        "org.eclipse.jetty:jetty-webapp:$jettyVersion"
+        "org.eclipse.jetty:jetty-webapp:$jettyVersion",
+        fileTree(dir: 'libs', include: '*.jar'),
     )
 
     testCompile(
