@@ -1,6 +1,6 @@
 package mvc.functional;
 
-import com.thoughtworks.main.JettyServer;
+import com.thoughtworks.main.JettyLauncher;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -16,7 +16,7 @@ public class PostTest {
     @Before
     public void setUp() {
 
-        JettyServer.start("src/main/webapp", "/sample");
+        JettyLauncher.start("src/main/webapp", "/sample");
         driver = new ChromeDriver();
     }
 

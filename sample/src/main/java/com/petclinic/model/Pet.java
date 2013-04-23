@@ -1,13 +1,29 @@
 package com.petclinic.model;
 
 public class Pet {
-    public String getId() {
-        return id;
+    private String id;
+
+    private String name;
+
+    public Pet(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    private final String id;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Pet(String id) {
+
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getId() {
+        return id;
     }
 }

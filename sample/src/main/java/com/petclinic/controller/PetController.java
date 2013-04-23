@@ -25,9 +25,8 @@ public class PetController implements Controller, RequestAware{
 
     @Path
     public String show() {
-        Pet pet = new Pet(request.getParameter("id"));
+        Pet pet = new Pet(request.getParameter("id"), "Doudou");
         modelMap.put("pet", pet);
-
         return "pet/show";
     }
 

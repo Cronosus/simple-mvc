@@ -6,7 +6,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
 
 import java.io.File;
 
-public class JettyServer {
+public class JettyLauncher {
 
     private static Server server;
 
@@ -18,6 +18,7 @@ public class JettyServer {
 
             server.start();
         } catch (Exception ex) {
+            stop();
             throw Lang.makeThrow("start server failed %s", ex.getMessage());
         }
     }
@@ -28,9 +29,5 @@ public class JettyServer {
         } catch (Exception e) {
             Lang.makeThrow("Stop server failed");
         }
-    }
-
-    public static void main(String[] args) {
-        start(args[0], args[1]);
     }
 }

@@ -20,6 +20,7 @@ public class RequestHandler {
         try {
             viewName =  (String) action.invoke(controller);
         } catch (Exception e) {
+            e.printStackTrace();
             throw Lang.makeThrow("Invoking action failed %s", e.getMessage());
         }
         View view = viewResolver.resolve(viewName);

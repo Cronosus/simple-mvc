@@ -1,6 +1,6 @@
 package mvc.functional;
 
-import com.thoughtworks.main.JettyServer;
+import com.thoughtworks.main.JettyLauncher;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class GetTest {
     @Before
     public void setUp() {
 
-        JettyServer.start("src/main/webapp", "/sample");
+        JettyLauncher.start("src/main/webapp", "/sample");
         driver = new ChromeDriver();
 
     }
@@ -33,14 +33,14 @@ public class GetTest {
     @Test
     public void should_response_to_get_request_with_params() {
         driver.get(JETTY_SERVER_URL + "/pet/show?id=1");
-        assertThat(getBody(), is("this is the detail page for pet with id 1"));
+        assertThat(getBody(), is("this is the detail page for pet with name doudou"));
     }
 
     @After
     public void tearDown() {
         driver.quit();
         try {
-            JettyServer.stop();
+            JettyLauncher.stop();
         } catch (Exception e) {
             System.err.println(e);
         }
