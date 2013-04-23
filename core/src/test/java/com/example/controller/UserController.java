@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import com.example.service.UserService;
 import com.thoughtworks.di.annotation.Component;
+import com.thoughtworks.di.annotation.Inject;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.core.Controller;
 
@@ -12,6 +14,9 @@ import java.util.Map;
 public class UserController implements Controller {
 
     private Map<String, Object> modelMap = new HashMap<>();
+
+    @Inject
+    public UserService service;
 
     @Path
     public String index() {
@@ -37,5 +42,9 @@ public class UserController implements Controller {
     @Override
     public Map<String, Object> getModelMap() {
         return this.modelMap;
+    }
+
+    public UserService getService() {
+        return service;
     }
 }

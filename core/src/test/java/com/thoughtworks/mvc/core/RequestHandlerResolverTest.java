@@ -1,7 +1,9 @@
 package com.thoughtworks.mvc.core;
 
 import com.example.controller.UserController;
+import com.example.service.UserService;
 import com.thoughtworks.di.core.Injector;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +17,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.notNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -86,4 +89,16 @@ public class RequestHandlerResolverTest {
         assertThat(requestHandler.getController(), instanceOf(UserController.class));
         assertThat(requestHandler.getActionName(), equalTo("fresh"));
     }
+
+    @Test
+    public void should_inject_required_service_to_controller() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        when(request.getRequestURI()).thenReturn("/sample/user/new");
+        when(request.getMethod()).thenReturn("GET");
+
+        RequestHandler requestHandler = resolver.resolve(request);
+        UserService service = ((UserController) requestHandler.getController()).getService();
+        assertThat(service, notNullValue());
+    }
+
 }

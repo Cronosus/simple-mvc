@@ -1,7 +1,9 @@
 package com.petclinic.controller;
 
 import com.petclinic.model.Pet;
+import com.petclinic.service.PetService;
 import com.thoughtworks.di.annotation.Component;
+import com.thoughtworks.di.annotation.Inject;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.core.Controller;
 import com.thoughtworks.mvc.core.RequestAware;
@@ -12,10 +14,13 @@ import java.util.Map;
 
 @Component
 @Path(url = "/pet")
-public class PetController implements Controller, RequestAware{
+public class PetController implements Controller, RequestAware {
 
     private Map<String, Object> modelMap = new HashMap<>();
     private HttpServletRequest request;
+
+    @Inject
+    private PetService service;
 
     @Path
     public String index() {
@@ -25,14 +30,17 @@ public class PetController implements Controller, RequestAware{
 
     @Path
     public String show() {
-        Pet pet = new Pet(request.getParameter("id"), "Doudou");
-        modelMap.put("pet", pet);
+        Long id = Long.parseLong(request.getParameter("id"));
+
+        modelMap.put("pet", service.get(id));
         return "pet/show";
     }
 
-    @Path(url = "create")
-    public String createUser() {
-        return "pet/create";
+    @Path
+    public String create(Pet pet) {
+        Pet created = service.create(pet);
+        modelMap.put("pet", created);
+        return "pet/show";
     }
 
     @Path(url = "new")

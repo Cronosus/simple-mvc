@@ -1,11 +1,11 @@
 package com.petclinic.model;
 
 public class Pet {
-    private String id;
+    private Long id;
 
     private String name;
 
-    public Pet(String id, String name) {
+    public Pet(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -15,7 +15,7 @@ public class Pet {
     }
 
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -23,7 +23,7 @@ public class Pet {
         return name;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 }

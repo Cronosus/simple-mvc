@@ -29,7 +29,7 @@ public class DispatchServlet extends HttpServlet {
         this.requestRequestHandlerResolver = RequestHandlerResolver.create(controllerContainer, packageName, config);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
         RequestHandler requestHandler = requestRequestHandlerResolver.resolve(request);
         ModelAndView modelAndView = requestHandler.handle();
         modelAndView.render(response.getWriter());
