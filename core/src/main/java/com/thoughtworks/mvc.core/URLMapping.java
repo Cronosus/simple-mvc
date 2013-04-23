@@ -1,14 +1,11 @@
 package com.thoughtworks.mvc.core;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.reflect.ClassPath;
 import com.thoughtworks.di.utils.ClassUtil;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.utils.Lang;
 import com.thoughtworks.utils.StringUtils;
 
 import javax.servlet.ServletContext;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,14 +19,14 @@ public class URLMapping {
 
     private Pattern urlPattern;
 
-    public URLMapping(ServletContext servletContext) {
-        urlPattern = Pattern.compile(servletContext.getContextPath() + "/(\\w+)(/?.*)");
+    public URLMapping(String contextPath) {
+        urlPattern = Pattern.compile(contextPath + "/(\\w+)(/?.*)");
         controllerMappingMap = new HashMap<>();
     }
 
-    public static URLMapping load(String packageName, ServletContext servletContext) {
+    public static URLMapping load(String packageName, String contextPath) {
 
-        URLMapping mapping = new URLMapping(servletContext);
+        URLMapping mapping = new URLMapping(contextPath);
 
         Collection<Class> allClasses = ClassUtil.getClassInfos(packageName);
 

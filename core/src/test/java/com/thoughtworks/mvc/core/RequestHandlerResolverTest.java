@@ -25,17 +25,11 @@ public class RequestHandlerResolverTest {
 
     private Injector container;
     private RequestHandlerResolver resolver;
-    private ServletConfig servletConfig;
 
     @Before
     public void setUp() {
-        servletConfig = mock(ServletConfig.class);
-        ServletContext context = mock(ServletContext.class);
-        when(servletConfig.getServletContext()).thenReturn(context);
-        when(context.getContextPath()).thenReturn("/sample");
-
         container = Injector.create("com.example");
-        resolver = RequestHandlerResolver.create(container, "com.example", servletConfig);
+        resolver = RequestHandlerResolver.create(container, "com.example", "/sample", "src/test/resources");
     }
 
     @Test

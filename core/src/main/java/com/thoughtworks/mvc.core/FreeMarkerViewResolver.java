@@ -6,39 +6,34 @@ import freemarker.template.DefaultObjectWrapper;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
+import java.io.File;
 import java.io.IOException;
 
 public class FreeMarkerViewResolver {
-    private final Configuration configuration;
+    private Configuration configuration;
 
-    private FreeMarkerViewResolver(ServletConfig servletConfig) throws IOException {
-
-        String templatePath = servletConfig.getInitParameter("template-path");
-
-        if (null == servletConfig) {
-            throw Lang.makeThrow("template path can not be empty");
-        }
-
-        this.configuration = configure(servletConfig.getServletContext(), templatePath);
+    public FreeMarkerViewResolver(String templatePath) {
+        this.configuration = configure(templatePath);
     }
 
-    public static FreeMarkerViewResolver create(ServletConfig servletConfig) {
-        try {
-            return new FreeMarkerViewResolver(servletConfig);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw Lang.makeThrow("create view resolver failed, %s", e.getMessage());
-        }
-    }
-
-    private Configuration configure(ServletContext servletContext, String templatePath) throws IOException {
+    private Configuration configure(String templatePath) {
         Configuration configuration = new Configuration();
-        configuration.setServletContextForTemplateLoading(servletContext, templatePath);
+        try {
+            configuration.setDirectoryForTemplateLoading(new File(templatePath));
+        } catch (IOException e) {
+            throw Lang.makeThrow("configure FreeMarker failed, %s", Lang.stackTrace(e));
+        }
         configuration.setObjectWrapper(new DefaultObjectWrapper());
         return configuration;
+    }
+
+    public static FreeMarkerViewResolver create(String templatePath) {
+        return new FreeMarkerViewResolver(templatePath);
     }
 
     public View resolve(String name) {
         return new FreeMarkerView(configuration, name);
     }
+
+
 }

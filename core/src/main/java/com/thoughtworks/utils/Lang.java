@@ -2,6 +2,7 @@ package com.thoughtworks.utils;
 
 import com.thoughtworks.mvc.annotation.Path;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +45,14 @@ public class Lang {
         } catch (NoSuchMethodException e) {
             throw makeThrow("can not find method %s for class %s", clazz.getCanonicalName(), name);
         }
+    }
+
+    public static String stackTrace(Throwable e) {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(e.getMessage());
+        for (StackTraceElement element : e.getStackTrace()) {
+            buffer.append(element.toString()).append("\n");
+        }
+        return buffer.toString();
     }
 }

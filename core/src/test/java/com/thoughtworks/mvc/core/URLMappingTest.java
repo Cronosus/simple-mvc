@@ -15,13 +15,10 @@ import static org.mockito.Mockito.when;
 public class URLMappingTest {
 
     private URLMapping mapping;
-    private ServletContext servletContext;
 
     @Before
     public void setUp() {
-        servletContext = mock(ServletContext.class);
-        when(servletContext.getContextPath()).thenReturn("/sample");
-        mapping = URLMapping.load("com.example", servletContext);
+        mapping = URLMapping.load("com.example", "/sample");
     }
 
     @Test

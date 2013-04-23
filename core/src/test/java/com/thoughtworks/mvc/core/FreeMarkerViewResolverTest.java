@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
+import java.io.File;
 import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,15 +15,13 @@ import static org.mockito.Mockito.when;
 public class FreeMarkerViewResolverTest {
 
     @Test
-    public void should_resolve_view_from_template_path() throws IOException {
-        ServletConfig config = mock(ServletConfig.class);
-        ServletContext servletContext = mock(ServletContext.class);
+    public void should_resolve_view_from_directory(){
 
-        when(config.getInitParameter("template-path")).thenReturn("src/test/resources");
-        when(config.getServletContext()).thenReturn(servletContext);
+        String templatePath = "src/test/resources";
+        FreeMarkerViewResolver resolver = FreeMarkerViewResolver.create(templatePath);
 
-        FreeMarkerViewResolver resolver = FreeMarkerViewResolver.create(config);
         View view = resolver.resolve("hello-world");
         assertThat(view.getName(), is("hello-world"));
+
     }
 }

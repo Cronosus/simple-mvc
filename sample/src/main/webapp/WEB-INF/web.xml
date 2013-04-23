@@ -17,7 +17,7 @@
         </init-param>
         <init-param>
             <param-name>template-path</param-name>
-            <param-value>WEB-INF/ftl</param-value>
+            <param-value>/WEB-INF/ftl</param-value>
         </init-param>
     </servlet>
 

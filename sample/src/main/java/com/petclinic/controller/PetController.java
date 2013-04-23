@@ -31,7 +31,6 @@ public class PetController implements Controller, RequestAware {
     @Path
     public String show() {
         Long id = Long.parseLong(request.getParameter("id"));
-
         modelMap.put("pet", service.get(id));
         return "pet/show";
     }

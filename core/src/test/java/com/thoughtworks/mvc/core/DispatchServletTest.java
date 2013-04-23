@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -23,6 +24,9 @@ public class DispatchServletTest {
         ServletContext servletContext = mock(ServletContext.class);
 
         when(servletContext.getContextPath()).thenReturn("/sample");
+        when(servletContext.getRealPath(anyString())).thenReturn("./src/test/resources");
+
+
         when(config.getInitParameter("module-name")).thenReturn("com.example");
         when(config.getInitParameter("template-path")).thenReturn("src/test/resources");
         when(config.getServletContext()).thenReturn(servletContext);

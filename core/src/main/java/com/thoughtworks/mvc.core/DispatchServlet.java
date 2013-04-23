@@ -7,6 +7,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 
 public class DispatchServlet extends HttpServlet {
@@ -19,14 +20,20 @@ public class DispatchServlet extends HttpServlet {
     public void init(ServletConfig config) {
 
         String packageName = config.getInitParameter("module-name");
+        String templatePath = config.getInitParameter("template-path");
 
 
         if (null == packageName) {
             throw Lang.makeThrow("module name can not be empty");
         }
 
+        if (null == templatePath){
+            throw Lang.makeThrow("template can not be empty");
+        }
+
+        String realPath = config.getServletContext().getRealPath(templatePath);
         this.controllerContainer = Injector.create(packageName);
-        this.requestRequestHandlerResolver = RequestHandlerResolver.create(controllerContainer, packageName, config);
+        this.requestRequestHandlerResolver = RequestHandlerResolver.create(controllerContainer, packageName, config.getServletContext().getContextPath(), realPath);
     }
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {

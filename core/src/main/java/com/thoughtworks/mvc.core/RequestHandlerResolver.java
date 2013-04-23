@@ -12,14 +12,14 @@ public class RequestHandlerResolver {
     private final URLMapping urlMapping;
     private final FreeMarkerViewResolver viewResolver;
 
-    private RequestHandlerResolver(Injector container, String packageName, ServletConfig servletConfig) {
+    private RequestHandlerResolver(Injector container, String packageName, String contextPath, String templatePath) {
         this.container = container;
-        this.urlMapping = URLMapping.load(packageName, servletConfig.getServletContext());
-        this.viewResolver = FreeMarkerViewResolver.create(servletConfig);
+        this.urlMapping = URLMapping.load(packageName, contextPath);
+        this.viewResolver = FreeMarkerViewResolver.create(templatePath);
     }
 
-    public static RequestHandlerResolver create(Injector container, String packageName, ServletConfig servletConfig) {
-        return new RequestHandlerResolver(container, packageName, servletConfig);
+    public static RequestHandlerResolver create(Injector container, String packageName, String contextPath, String templatePath) {
+        return new RequestHandlerResolver(container, packageName, contextPath, templatePath);
     }
 
     public RequestHandler resolve(HttpServletRequest request) {
