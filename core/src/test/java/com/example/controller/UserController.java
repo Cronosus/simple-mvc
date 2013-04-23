@@ -3,13 +3,14 @@ package com.example.controller;
 import com.example.service.UserService;
 import com.thoughtworks.di.annotation.Component;
 import com.thoughtworks.di.annotation.Inject;
+import com.thoughtworks.di.core.Lifecycle;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.core.Controller;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+@Component(lifecycle = Lifecycle.Transient)
 @Path(url = "/user")
 public class UserController implements Controller {
 

@@ -12,9 +12,14 @@
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>com.thoughtworks.mvc.core.DispatchServlet</servlet-class>
         <init-param>
-            <param-name>module-name</param-name>
-            <param-value>com.petclinic</param-value>
+            <param-name>controller-module</param-name>
+            <param-value>com.petclinic.controller</param-value>
         </init-param>
+        <init-param>
+            <param-name>service-module</param-name>
+            <param-value>com.petclinic.service</param-value>
+        </init-param>
+
         <init-param>
             <param-name>template-path</param-name>
             <param-value>/WEB-INF/ftl</param-value>

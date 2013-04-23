@@ -4,6 +4,7 @@ import com.petclinic.model.Pet;
 import com.petclinic.service.PetService;
 import com.thoughtworks.di.annotation.Component;
 import com.thoughtworks.di.annotation.Inject;
+import com.thoughtworks.di.core.Lifecycle;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.core.Controller;
 import com.thoughtworks.mvc.core.RequestAware;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+@Component(lifecycle = Lifecycle.Transient)
 @Path(url = "/pet")
 public class PetController implements Controller, RequestAware {
 

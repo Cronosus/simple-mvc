@@ -27,7 +27,9 @@ public class DispatchServletTest {
         when(servletContext.getRealPath(anyString())).thenReturn("./src/test/resources");
 
 
-        when(config.getInitParameter("module-name")).thenReturn("com.example");
+        when(config.getInitParameter("controller-module")).thenReturn("com.example.controller");
+        when(config.getInitParameter("service-module")).thenReturn("com.example.service");
+
         when(config.getInitParameter("template-path")).thenReturn("src/test/resources");
         when(config.getServletContext()).thenReturn(servletContext);
 

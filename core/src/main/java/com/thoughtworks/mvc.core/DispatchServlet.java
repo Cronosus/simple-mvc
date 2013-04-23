@@ -19,21 +19,24 @@ public class DispatchServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) {
 
-        String packageName = config.getInitParameter("module-name");
+        String controllerPackageName = config.getInitParameter("controller-module");
+        String servicePackageName = config.getInitParameter("service-module");
         String templatePath = config.getInitParameter("template-path");
 
 
-        if (null == packageName) {
+        if (null == controllerPackageName || null == servicePackageName) {
             throw Lang.makeThrow("module name can not be empty");
         }
 
-        if (null == templatePath){
+        if (null == templatePath) {
             throw Lang.makeThrow("template can not be empty");
         }
 
-        String realPath = config.getServletContext().getRealPath(templatePath);
-        this.controllerContainer = Injector.create(packageName);
-        this.requestRequestHandlerResolver = RequestHandlerResolver.create(controllerContainer, packageName, config.getServletContext().getContextPath(), realPath);
+        String realTemplatePath = config.getServletContext().getRealPath(templatePath);
+        Injector serviceInjector = Injector.create(servicePackageName);
+
+        this.controllerContainer = Injector.create(controllerPackageName, serviceInjector);
+        this.requestRequestHandlerResolver = RequestHandlerResolver.create(controllerContainer, controllerPackageName, config.getServletContext().getContextPath(), realTemplatePath);
     }
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
