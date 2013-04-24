@@ -81,6 +81,7 @@ public class URLMapping {
     private class ControllerMappingEntry {
         private final Map<String, Method> actionMappingMap = new HashMap<>();
         private final Class<?> controller;
+        private Map<String, Class<?>> paramMappingMap = new HashMap<>();
 
         public ControllerMappingEntry(Class<?> controller) {
             this.controller = controller;
@@ -92,11 +93,21 @@ public class URLMapping {
                 actionUrl = method.getName();
             }
             actionMappingMap.put(actionUrl, method);
+            paramMappingMap.put(actionUrl, getRequiredParam(method));
+        }
+
+        private Class<?> getRequiredParam(Method method) {
+            Class<?> [] paramTypes = method.getParameterTypes();
+            Class<?> requiredParam = null;
+            if(paramTypes.length > 0){
+                requiredParam = paramTypes[0];
+            }
+            return requiredParam;
         }
 
         private ActionInfo actionFor(String actionUrl) {
             String url = StringUtils.stripLeadSlash(actionUrl);
-            return new ActionInfo(controller, actionMappingMap.get(url));
+            return new ActionInfo(controller, actionMappingMap.get(url), paramMappingMap.get(url));
         }
     }
 }

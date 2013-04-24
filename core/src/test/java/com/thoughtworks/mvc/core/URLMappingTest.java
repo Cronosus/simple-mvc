@@ -1,16 +1,16 @@
 package com.thoughtworks.mvc.core;
 
 import com.example.controller.UserController;
+import com.example.model.User;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.servlet.ServletContext;
 import java.lang.reflect.Method;
 
+import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class URLMappingTest {
 
@@ -36,10 +36,22 @@ public class URLMappingTest {
     public void should_map_to_action_with_customized_url() throws NoSuchMethodException {
         ActionInfo actionInfo = mapping.get("/sample/user/create");
 
-        Method expectedMethod = UserController.class.getDeclaredMethod("createUser");
+        Method expectedMethod = UserController.class.getDeclaredMethod("create");
 
         assertThat((Class<UserController>) actionInfo.getControllerClass(), equalTo(UserController.class));
         assertThat(actionInfo.getMethod(), equalTo(expectedMethod));
+    }
+
+    @Test
+    public void should_extract_required_simple_param() {
+        ActionInfo actionInfo = mapping.get("/sample/user/show");
+        assertThat((Class<String>) actionInfo.getRequiredParamType(), equalTo(String.class));
+    }
+
+    @Test
+    public void should_extract_required_object_param() {
+        ActionInfo actionInfo = mapping.get("/sample/user/create");
+        assertThat((Class<User>) actionInfo.getRequiredParamType(), equalTo(User.class));
     }
 
 }
