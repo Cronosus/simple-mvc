@@ -5,6 +5,7 @@ import com.petclinic.service.PetService;
 import com.thoughtworks.di.annotation.Component;
 import com.thoughtworks.di.annotation.Inject;
 import com.thoughtworks.di.core.Lifecycle;
+import com.thoughtworks.mvc.annotation.Param;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.core.Controller;
 import com.thoughtworks.mvc.core.RequestAware;
@@ -30,14 +31,13 @@ public class PetController implements Controller, RequestAware {
     }
 
     @Path
-    public String show() {
-        Long id = Long.parseLong(request.getParameter("id"));
+    public String show(@Param("id") String id) {
         modelMap.put("pet", service.get(id));
         return "pet/show";
     }
 
     @Path
-    public String create(Pet pet) {
+    public String create(@Param("pet") Pet pet) {
         Pet created = service.create(pet);
         modelMap.put("pet", created);
         return "pet/show";

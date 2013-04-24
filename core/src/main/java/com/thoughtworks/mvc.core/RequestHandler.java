@@ -18,6 +18,9 @@ public class RequestHandler {
     }
 
     public ModelAndView handle() {
+        assert action != null;
+        assert controller != null;
+
         String viewName;
         try {
             if (null == param) {
@@ -27,7 +30,7 @@ public class RequestHandler {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            throw Lang.makeThrow("Invoking action failed %s", e.getMessage());
+            throw Lang.makeThrow("Invoking action failed %s", Lang.stackTrace(e));
         }
         View view = viewResolver.resolve(viewName);
 

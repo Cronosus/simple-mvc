@@ -36,10 +36,8 @@ public class URLMappingTest {
     public void should_map_to_action_with_customized_url() throws NoSuchMethodException {
         ActionInfo actionInfo = mapping.get("/sample/user/create");
 
-        Method expectedMethod = UserController.class.getDeclaredMethod("create");
-
         assertThat((Class<UserController>) actionInfo.getControllerClass(), equalTo(UserController.class));
-        assertThat(actionInfo.getMethod(), equalTo(expectedMethod));
+        assertThat(actionInfo.getMethod().getName(), equalTo("create"));
     }
 
     @Test

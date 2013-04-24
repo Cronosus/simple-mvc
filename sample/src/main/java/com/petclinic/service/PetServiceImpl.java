@@ -11,17 +11,21 @@ import java.util.concurrent.atomic.AtomicLong;
 public class PetServiceImpl implements PetService {
 
     private static AtomicLong idSequence = new AtomicLong();
-    private Map<Long, Pet> pets = new HashMap<>();
+    private Map<String, Pet> pets = new HashMap<>();
 
     @Override
     public Pet create(Pet pet) {
-        pet.setId(idSequence.incrementAndGet());
+        pet.setId(String.valueOf(idSequence.incrementAndGet()));
         pets.put(pet.getId(), pet);
         return pet;
     }
 
     @Override
-    public Pet get(Long id) {
-        return pets.get(id);
+    public Pet get(String id) {
+        Pet pet = pets.get(id);
+        if (pet == null){
+            pet = new Pet("Dummy", "Doudou");
+        }
+        return pet;
     }
 }
