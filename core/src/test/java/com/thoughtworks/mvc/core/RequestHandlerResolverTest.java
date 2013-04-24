@@ -1,6 +1,7 @@
 package com.thoughtworks.mvc.core;
 
 import com.example.controller.UserController;
+import com.example.model.User;
 import com.example.service.UserService;
 import com.thoughtworks.di.core.Injector;
 import org.hamcrest.Matchers;
@@ -11,6 +12,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 
 import static org.hamcrest.Matchers.instanceOf;
@@ -29,7 +31,10 @@ public class RequestHandlerResolverTest {
     @Before
     public void setUp() {
         container = Injector.create("com.example");
-        resolver = RequestHandlerResolver.create(container, "com.example", "/sample", "src/test/resources");
+
+        String templatePath = this.getClass().getResource("/").getPath();
+
+        resolver = RequestHandlerResolver.create(container, "com.example", "/sample", templatePath);
     }
 
     @Test
@@ -93,6 +98,18 @@ public class RequestHandlerResolverTest {
         RequestHandler requestHandler = resolver.resolve(request);
         UserService service = ((UserController) requestHandler.getController()).getService();
         assertThat(service, notNullValue());
+    }
+
+    @Test
+    public void should_inject_required_param_on_handling_request() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        when(request.getRequestURI()).thenReturn("/sample/user/show");
+        when(request.getMethod()).thenReturn("GET");
+        when(request.getParameter("id")).thenReturn("1");
+
+        RequestHandler requestHandler = resolver.resolve(request);
+        ModelAndView mv = requestHandler.handle();
+        assertThat(((User) mv.getModel().get("user")).getId(), equalTo("1"));
     }
 
 }

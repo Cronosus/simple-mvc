@@ -31,7 +31,7 @@ public class RequestHandlerTest {
     @Test
     public void should_return_view() {
         Method method = Lang.methodFor(UserController.class, "index");
-        RequestHandler handler = new RequestHandler(viewResolver, controller, method);
+        RequestHandler handler = new RequestHandler(viewResolver, controller, method, null);
         ModelAndView modelAndView = handler.handle();
         assertThat(modelAndView.getView(), is(expectedView));
     }
@@ -39,7 +39,7 @@ public class RequestHandlerTest {
     @Test
     public void should_return_model() {
         Method method = Lang.methodFor(UserController.class, "index");
-        RequestHandler handler = new RequestHandler(viewResolver, controller, method);
+        RequestHandler handler = new RequestHandler(viewResolver, controller, method, null);
 
         ModelAndView modelAndView = handler.handle();
         assertThat((Integer) modelAndView.getModel().get("total"), is(5));

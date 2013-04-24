@@ -45,13 +45,15 @@ public class URLMappingTest {
     @Test
     public void should_extract_required_simple_param() {
         ActionInfo actionInfo = mapping.get("/sample/user/show");
-        assertThat((Class<String>) actionInfo.getRequiredParamType(), equalTo(String.class));
+        assertThat((Class<String>) actionInfo.getRequiredParam().getType(), equalTo(String.class));
+        assertThat(actionInfo.getRequiredParam().getName(), equalTo("id"));
     }
 
     @Test
     public void should_extract_required_object_param() {
         ActionInfo actionInfo = mapping.get("/sample/user/create");
-        assertThat((Class<User>) actionInfo.getRequiredParamType(), equalTo(User.class));
+        assertThat((Class<User>) actionInfo.getRequiredParam().getType(), equalTo(User.class));
+        assertThat(actionInfo.getRequiredParam().getName(), equalTo("user"));
     }
 
 }

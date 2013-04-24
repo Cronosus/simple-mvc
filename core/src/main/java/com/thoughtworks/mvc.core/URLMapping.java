@@ -1,11 +1,13 @@
 package com.thoughtworks.mvc.core;
 
 import com.thoughtworks.di.utils.ClassUtil;
+import com.thoughtworks.mvc.annotation.Param;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.utils.Lang;
 import com.thoughtworks.utils.StringUtils;
 
 import javax.servlet.ServletContext;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
@@ -81,7 +83,7 @@ public class URLMapping {
     private class ControllerMappingEntry {
         private final Map<String, Method> actionMappingMap = new HashMap<>();
         private final Class<?> controller;
-        private Map<String, Class<?>> paramMappingMap = new HashMap<>();
+        private Map<String, RequiredParam> paramMappingMap = new HashMap<>();
 
         public ControllerMappingEntry(Class<?> controller) {
             this.controller = controller;
@@ -96,13 +98,28 @@ public class URLMapping {
             paramMappingMap.put(actionUrl, getRequiredParam(method));
         }
 
-        private Class<?> getRequiredParam(Method method) {
-            Class<?> [] paramTypes = method.getParameterTypes();
-            Class<?> requiredParam = null;
-            if(paramTypes.length > 0){
-                requiredParam = paramTypes[0];
+        private RequiredParam getRequiredParam(Method method) {
+
+            Annotation[][] paramAnnotations = method.getParameterAnnotations();
+            Class<?>[] paramTypes = method.getParameterTypes();
+
+            String name = null;
+            Class<?> paramType = null;
+
+            if (paramTypes.length == 1) {
+                paramType = paramTypes[0];
+                if (paramAnnotations[0].length == 0) {
+                    throw Lang.makeThrow("Parameter must associated with annotation");
+                }
+                name = ((Param) paramAnnotations[0][0]).value();
             }
-            return requiredParam;
+
+            if (name != null && paramType != null) {
+                return new RequiredParam(paramType, name);
+            } else {
+                return null;
+            }
+
         }
 
         private ActionInfo actionFor(String actionUrl) {

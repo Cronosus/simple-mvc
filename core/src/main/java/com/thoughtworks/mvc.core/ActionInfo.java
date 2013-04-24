@@ -5,12 +5,12 @@ import java.lang.reflect.Method;
 public class ActionInfo<T extends Controller> {
     private final Class<T> controller;
     private Method method;
-    private Class<?> requiredParamType;
+    private RequiredParam requiredParam;
 
-    public ActionInfo(Class<T> controller, Method method, Class<?> requiredParamType) {
+    public ActionInfo(Class controller, Method method, RequiredParam requiredParam) {
         this.controller = controller;
         this.method = method;
-        this.requiredParamType = requiredParamType;
+        this.requiredParam = requiredParam;
     }
 
     public Class<T> getControllerClass() {
@@ -21,7 +21,7 @@ public class ActionInfo<T extends Controller> {
         return method;
     }
 
-    public Class<?> getRequiredParamType() {
-        return requiredParamType;
+    public RequiredParam getRequiredParam() {
+        return requiredParam;
     }
 }

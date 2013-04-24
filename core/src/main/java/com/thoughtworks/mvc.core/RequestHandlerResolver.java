@@ -25,18 +25,28 @@ public class RequestHandlerResolver {
     public RequestHandler resolve(HttpServletRequest request) {
 
         ActionInfo actionInfo = urlMapping.get(request.getRequestURI());
+
         if (null == actionInfo) {
             throw Lang.makeThrow("can not find action for requested URI %s.", request.getRequestURI());
         }
 
         Controller controller = (Controller) container.get(actionInfo.getControllerClass());
 
-        if(RequestAware.class.isAssignableFrom(actionInfo.getControllerClass())){
-            ((RequestAware)controller).setRequest(request);
-        }
+        Object param = extractParam(request, actionInfo);
 
         return new RequestHandler(viewResolver, controller,
-                actionInfo.getMethod());
+                actionInfo.getMethod(), param);
+    }
+
+    private Object extractParam(HttpServletRequest request, ActionInfo actionInfo) {
+        RequiredParam requiredParam = actionInfo.getRequiredParam();
+        Object param = null;
+        if (null != requiredParam) {
+            param = request.getParameter(requiredParam.getName());
+        }
+
+        return param;
+
     }
 
 }

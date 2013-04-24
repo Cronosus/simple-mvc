@@ -5,6 +5,7 @@ import com.example.service.UserService;
 import com.thoughtworks.di.annotation.Component;
 import com.thoughtworks.di.annotation.Inject;
 import com.thoughtworks.di.core.Lifecycle;
+import com.thoughtworks.mvc.annotation.Param;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.core.Controller;
 
@@ -27,12 +28,14 @@ public class UserController implements Controller {
     }
 
     @Path
-    public String show(String id) {
+    public String show(@Param("id") String id) {
+        User user = service.get(id);
+        modelMap.put("user", user);
         return "user/show";
     }
 
     @Path(url = "create")
-    public String create(User user) {
+    public String create(@Param("user") User user) {
         return "user/create";
     }
 
