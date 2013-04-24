@@ -65,5 +65,10 @@ project(":sample") {
     )
   }
 
+  task start(type: JavaExec, dependsOn:[classes]) {
+    main = 'com.petclinic.server.AppServer'
+    classpath = sourceSets.main.runtimeClasspath
+  }
+
 }
 
