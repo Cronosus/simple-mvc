@@ -1,7 +1,7 @@
-package com.petclinic.controller;
+package com.house.controller;
 
-import com.petclinic.model.Pet;
-import com.petclinic.service.PetService;
+import com.house.model.House;
+import com.house.service.HouseService;
 import com.thoughtworks.di.annotation.Component;
 import com.thoughtworks.di.annotation.Inject;
 import com.thoughtworks.di.core.Lifecycle;
@@ -9,42 +9,43 @@ import com.thoughtworks.mvc.annotation.Param;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.core.Controller;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component(lifecycle = Lifecycle.Transient)
-@Path(url = "/pet")
-public class PetController implements Controller {
+@Path(url = "/house")
+public class HouseController implements Controller {
 
     private Map<String, Object> modelMap = new HashMap<>();
-    private HttpServletRequest request;
 
     @Inject
-    private PetService service;
+    private HouseService service;
 
     @Path
     public String index() {
         modelMap.put("total", 5);
-        return "pet/index";
+        return "house/index";
     }
 
     @Path
     public String show(@Param("id") String id) {
-        modelMap.put("pet", service.get(id));
-        return "pet/show";
+        modelMap.put("house", service.get(id));
+        return "house/show";
     }
 
     @Path
-    public String create(@Param("pet") Pet pet) {
-        Pet created = service.create(pet);
-        modelMap.put("pet", created);
-        return "pet/show";
+    public String create(@Param("house") House house) {
+        House created = service.create(house);
+
+        System.out.println(created + "================<>");
+
+        modelMap.put("house", created);
+        return "house/show";
     }
 
     @Path(url = "new")
     public String fresh() {
-        return "pet/new";
+        return "house/new";
     }
 
     @Override

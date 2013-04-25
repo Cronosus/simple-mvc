@@ -13,11 +13,11 @@
         <servlet-class>com.thoughtworks.mvc.core.DispatchServlet</servlet-class>
         <init-param>
             <param-name>controller-module</param-name>
-            <param-value>com.petclinic.controller</param-value>
+            <param-value>com.house.controller</param-value>
         </init-param>
         <init-param>
             <param-name>service-module</param-name>
-            <param-value>com.petclinic.service</param-value>
+            <param-value>com.house.service</param-value>
         </init-param>
 
         <init-param>

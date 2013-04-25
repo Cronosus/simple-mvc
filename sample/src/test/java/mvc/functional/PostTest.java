@@ -4,20 +4,28 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class PostTest extends FunctionalTest {
 
 
     @Test
     public void should_accept_post_request() {
-        driver.get(JETTY_SERVER_URL + "/pet/new");
+        driver.get(JETTY_SERVER_URL + "/house/new");
 
-        WebElement element = driver.findElement(By.name("name"));
+        WebElement name = driver.findElement(By.name("house.name"));
+        WebElement age = driver.findElement(By.name("house.age"));
+        WebElement doorHeight = driver.findElement(By.name("house.door.height"));
+        WebElement doorWidth = driver.findElement(By.name("house.door.width"));
 
-        // Enter something to search for
-        element.sendKeys("Cheese!");
+        name.sendKeys("Doudou");
+        age.sendKeys("18");
+        doorHeight.sendKeys("2");
+        doorWidth.sendKeys("1");
 
-        // Now submit the form. WebDriver will find the form for us from the element
-        element.submit();
+        name.submit();
+
+        assertThat(getBody(), equalTo("house: name: Doudou, door: width: 1m, height: 2m"));
     }
-
 }

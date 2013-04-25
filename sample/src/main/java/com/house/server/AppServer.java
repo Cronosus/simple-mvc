@@ -1,4 +1,4 @@
-package com.petclinic.server;
+package com.house.server;
 
 import com.thoughtworks.main.JettyLauncher;
 
