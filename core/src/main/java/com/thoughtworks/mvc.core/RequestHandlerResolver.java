@@ -3,7 +3,6 @@ package com.thoughtworks.mvc.core;
 import com.thoughtworks.di.core.Injector;
 import com.thoughtworks.utils.Lang;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
 
@@ -47,43 +46,53 @@ public class RequestHandlerResolver {
 
         }
 
-        Object param = null;
-        String stringValue = request.getParameter(requiredParam.getName());
+        Object param;
 
         if (Lang.isPrimitive(requiredParam.getType())) {
-            param = typeConvert(stringValue, requiredParam.getType());
+            param = typeConvert(request, requiredParam.getType(), requiredParam.getName());
         } else {
-            param = Lang.instanceFor(requiredParam.getType());
-            Field[] fields = requiredParam.getType().getDeclaredFields();
-
-            for (Field field : fields) {
-                String value = request.getParameter(field.getName());
-                if (null != value) {
-                    Object fieldValue = typeConvert(value, field.getType());
-                    try {
-                        field.setAccessible(true);
-                        field.set(param, fieldValue);
-                    } catch (Exception e) {
-                        Lang.makeThrow("Setting param failed. error: %s", Lang.stackTrace(e));
-                    }
-                }
-            }
+            param = objectConvert(request, requiredParam.getType(), requiredParam.getName());
         }
         return param;
     }
 
-    private Object typeConvert(String stringValue, Class<?> type) {
-        if (null == stringValue)
+    private Object objectConvert(HttpServletRequest request, Class<?> type, String name) {
+        Object instance = Lang.instanceFor(type);
+        Field[] fields = type.getDeclaredFields();
+
+        Object fieldValue;
+        for (Field field : fields) {
+            String paramName = name == null ? field.getName() : name + "." + field.getName();
+
+            if (Lang.isPrimitive(field.getType())) {
+                fieldValue = typeConvert(request, field.getType(), paramName);
+
+            } else {
+                fieldValue = objectConvert(request, field.getType(), paramName);
+            }
+
+            try {
+                field.setAccessible(true);
+                field.set(instance, fieldValue);
+            } catch (Exception e) {
+                Lang.makeThrow("Setting param failed. error: %s", Lang.stackTrace(e));
+            }
+        }
+        return instance;
+    }
+
+    private Object typeConvert(HttpServletRequest request, Class<?> type, String name) {
+        String val = request.getParameter(name);
+        if (null == val)
             return null;
         Object param;
         if (type == Long.class) {
-            param = Long.parseLong(stringValue);
+            param = Long.parseLong(val);
         } else if (type == Integer.class) {
-            param = Integer.parseInt(stringValue);
+            param = Integer.parseInt(val);
         } else {
-            param = stringValue;
+            param = val;
         }
-        System.out.println("Converted value: " + param);
         return param;
     }
 

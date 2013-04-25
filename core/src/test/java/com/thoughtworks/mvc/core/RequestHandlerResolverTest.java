@@ -116,8 +116,8 @@ public class RequestHandlerResolverTest {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/create");
         when(request.getMethod()).thenReturn("POST");
-        when(request.getParameter("name")).thenReturn("Doudou");
-        when(request.getParameter("age")).thenReturn("18");
+        when(request.getParameter("user.name")).thenReturn("Doudou");
+        when(request.getParameter("user.age")).thenReturn("18");
 
         RequestHandler requestHandler = resolver.resolve(request);
         User user = (User) requestHandler.getParam();
@@ -125,6 +125,26 @@ public class RequestHandlerResolverTest {
         assertThat(user, Matchers.notNullValue());
         assertThat(user.getName(), equalTo("Doudou"));
         assertThat(user.getAge(), equalTo(18));
+    }
+
+    @Test
+    public void should_inject_nested_param_on_handling_request() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        when(request.getRequestURI()).thenReturn("/sample/user/create");
+        when(request.getMethod()).thenReturn("POST");
+        when(request.getParameter("user.name")).thenReturn("Doudou");
+        when(request.getParameter("user.age")).thenReturn("18");
+        when(request.getParameter("user.pet.name")).thenReturn("Doudou Jr");
+        when(request.getParameter("user.pet.category")).thenReturn("Dog");
+
+        RequestHandler requestHandler = resolver.resolve(request);
+        User user = (User) requestHandler.getParam();
+
+        assertThat(user, Matchers.notNullValue());
+        assertThat(user.getName(), equalTo("Doudou"));
+        assertThat(user.getAge(), equalTo(18));
+        assertThat(user.getPet().getName(), equalTo("Doudou Jr"));
+        assertThat(user.getPet().getCategory(), equalTo("Dog"));
     }
 
 

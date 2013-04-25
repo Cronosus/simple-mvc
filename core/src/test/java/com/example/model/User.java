@@ -5,6 +5,7 @@ public class User {
     private Long id;
     private String name;
     private Integer age;
+    private Pet pet;
 
     public void setId(Long id) {
         this.id = id;
@@ -37,5 +38,9 @@ public class User {
 
     public Integer getAge() {
         return age;
+    }
+
+    public Pet getPet() {
+        return pet;
     }
 }
