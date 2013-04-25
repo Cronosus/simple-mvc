@@ -8,7 +8,6 @@ import com.thoughtworks.di.core.Lifecycle;
 import com.thoughtworks.mvc.annotation.Param;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.core.Controller;
-import com.thoughtworks.mvc.core.RequestAware;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 @Component(lifecycle = Lifecycle.Transient)
 @Path(url = "/pet")
-public class PetController implements Controller, RequestAware {
+public class PetController implements Controller {
 
     private Map<String, Object> modelMap = new HashMap<>();
     private HttpServletRequest request;
@@ -51,10 +50,5 @@ public class PetController implements Controller, RequestAware {
     @Override
     public Map<String, Object> getModelMap() {
         return this.modelMap;
-    }
-
-    @Override
-    public void setRequest(HttpServletRequest request) {
-        this.request = request;
     }
 }
