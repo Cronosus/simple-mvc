@@ -57,7 +57,7 @@ public class Lang {
     }
 
     public static Object instanceFor(Class<?> clazz) {
-        Object instance = null;
+        Object instance;
         try {
             instance = clazz.newInstance();
         } catch (Exception e) {
