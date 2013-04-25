@@ -15,7 +15,6 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public House create(House house) {
-        System.out.println(house.getDoor());
         house.setId(String.valueOf(idSequence.incrementAndGet()));
         pets.put(house.getId(), house);
         return house;

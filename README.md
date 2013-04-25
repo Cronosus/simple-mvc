@@ -4,7 +4,7 @@
 
 ###Start sample app in embeded jetty:
 
-run `gradle sample:start` and visit `http://localhost:8080/sample/pet/index`
+run `gradle sample:start` and visit `http://localhost:8080/sample/house/index`
 
 
 Tasks:

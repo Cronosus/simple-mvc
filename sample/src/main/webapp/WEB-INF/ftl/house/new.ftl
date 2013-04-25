@@ -9,9 +9,6 @@
           <label>Name:</label><input type = "text" name="house.name"/>
         </div>
         <div class="fieldset">
-          <label>Age:</label><input type = "text" name="house.age"/>
-        </div>
-        <div class="fieldset">
         <label>Door width:</label><input type = "text" name="house.door.width"/>
         </div>
         <div class="fieldset">

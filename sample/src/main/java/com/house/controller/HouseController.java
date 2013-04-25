@@ -36,9 +36,6 @@ public class HouseController implements Controller {
     @Path
     public String create(@Param("house") House house) {
         House created = service.create(house);
-
-        System.out.println(created + "================<>");
-
         modelMap.put("house", created);
         return "house/show";
     }
