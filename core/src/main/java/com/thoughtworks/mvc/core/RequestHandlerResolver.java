@@ -2,6 +2,10 @@ package com.thoughtworks.mvc.core;
 
 import com.thoughtworks.di.core.Injector;
 import com.thoughtworks.mvc.converter.TypeConverter;
+import com.thoughtworks.mvc.entity.ActionInfo;
+import com.thoughtworks.mvc.entity.RequiredParam;
+import com.thoughtworks.mvc.view.FreeMarkerViewResolver;
+import com.thoughtworks.mvc.view.ViewResolver;
 import com.thoughtworks.utils.Lang;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +14,7 @@ public class RequestHandlerResolver {
 
     private final Injector container;
     private final URLMapping urlMapping;
-    private final FreeMarkerViewResolver viewResolver;
+    private final ViewResolver viewResolver;
 
     private RequestHandlerResolver(Injector container, String packageName, String contextPath, String templatePath) {
         this.container = container;

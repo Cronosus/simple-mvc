@@ -1,15 +1,13 @@
-package com.thoughtworks.mvc.core;
+package com.thoughtworks.mvc.view;
 
 import com.thoughtworks.utils.Lang;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
 
-public class FreeMarkerViewResolver {
+public class FreeMarkerViewResolver implements ViewResolver {
     private Configuration configuration;
 
     public FreeMarkerViewResolver(String templatePath) {
@@ -27,10 +25,11 @@ public class FreeMarkerViewResolver {
         return configuration;
     }
 
-    public static FreeMarkerViewResolver create(String templatePath) {
+    public static ViewResolver create(String templatePath) {
         return new FreeMarkerViewResolver(templatePath);
     }
 
+    @Override
     public View resolve(String name) {
         return new FreeMarkerView(configuration, name);
     }

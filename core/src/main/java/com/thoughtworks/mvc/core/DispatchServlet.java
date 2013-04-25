@@ -1,13 +1,13 @@
 package com.thoughtworks.mvc.core;
 
 import com.thoughtworks.di.core.Injector;
+import com.thoughtworks.mvc.entity.ModelAndView;
 import com.thoughtworks.utils.Lang;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
 
 public class DispatchServlet extends HttpServlet {

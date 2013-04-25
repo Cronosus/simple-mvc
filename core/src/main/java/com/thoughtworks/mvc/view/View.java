@@ -1,4 +1,4 @@
-package com.thoughtworks.mvc.core;
+package com.thoughtworks.mvc.view;
 
 import java.io.IOException;
 import java.io.Writer;

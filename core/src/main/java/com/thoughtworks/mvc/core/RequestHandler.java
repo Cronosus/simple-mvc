@@ -1,16 +1,19 @@
 package com.thoughtworks.mvc.core;
 
+import com.thoughtworks.mvc.entity.ModelAndView;
+import com.thoughtworks.mvc.view.View;
+import com.thoughtworks.mvc.view.ViewResolver;
 import com.thoughtworks.utils.Lang;
 
 import java.lang.reflect.Method;
 
 public class RequestHandler {
     private final Object param;
-    private FreeMarkerViewResolver viewResolver;
+    private ViewResolver viewResolver;
     private Controller controller;
     private Method action;
 
-    public RequestHandler(FreeMarkerViewResolver viewResolver, Controller controller, Method action, Object param) {
+    public RequestHandler(ViewResolver viewResolver, Controller controller, Method action, Object param) {
         this.viewResolver = viewResolver;
         this.controller = controller;
         this.action = action;

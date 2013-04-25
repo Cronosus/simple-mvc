@@ -1,16 +1,13 @@
 package com.thoughtworks.mvc.core;
 
+import com.thoughtworks.mvc.view.FreeMarkerViewResolver;
+import com.thoughtworks.mvc.view.View;
+import com.thoughtworks.mvc.view.ViewResolver;
 import org.junit.Test;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import java.io.File;
-import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class FreeMarkerViewResolverTest {
 
@@ -18,7 +15,7 @@ public class FreeMarkerViewResolverTest {
     public void should_resolve_view_from_directory(){
 
         String templatePath = "src/test/resources";
-        FreeMarkerViewResolver resolver = FreeMarkerViewResolver.create(templatePath);
+        ViewResolver resolver = FreeMarkerViewResolver.create(templatePath);
 
         View view = resolver.resolve("hello-world");
         assertThat(view.getName(), is("hello-world"));

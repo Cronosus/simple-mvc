@@ -1,4 +1,4 @@
-package com.thoughtworks.mvc.core;
+package com.thoughtworks.mvc.entity;
 
 public class RequiredParam {
 

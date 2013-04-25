@@ -1,4 +1,4 @@
-package com.thoughtworks.mvc.core;
+package com.thoughtworks.mvc.view;
 
 import com.thoughtworks.utils.Lang;
 import freemarker.template.Configuration;

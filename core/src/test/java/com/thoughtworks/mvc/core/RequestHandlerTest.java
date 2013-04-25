@@ -1,5 +1,9 @@
 package com.thoughtworks.mvc.core;
 
+import com.thoughtworks.mvc.entity.ModelAndView;
+import com.thoughtworks.mvc.view.FreeMarkerViewResolver;
+import com.thoughtworks.mvc.view.View;
+import com.thoughtworks.mvc.view.ViewResolver;
 import com.thoughtworks.utils.Lang;
 import com.example.controller.UserController;
 import org.junit.Before;
@@ -17,7 +21,7 @@ import static org.mockito.Mockito.when;
 public class RequestHandlerTest {
 
     private Controller controller;
-    private FreeMarkerViewResolver viewResolver;
+    private ViewResolver viewResolver;
     private View expectedView;
 
     @Before

@@ -1,5 +1,6 @@
 package com.thoughtworks.mvc.core;
 
+import com.thoughtworks.mvc.view.FreeMarkerView;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import org.junit.Before;

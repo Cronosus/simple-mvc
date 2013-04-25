@@ -2,10 +2,9 @@ package com.thoughtworks.mvc.core;
 
 import com.example.controller.UserController;
 import com.example.model.User;
+import com.thoughtworks.mvc.entity.ActionInfo;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.lang.reflect.Method;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;

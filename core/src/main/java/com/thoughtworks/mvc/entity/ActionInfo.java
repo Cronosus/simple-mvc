@@ -1,4 +1,6 @@
-package com.thoughtworks.mvc.core;
+package com.thoughtworks.mvc.entity;
+
+import com.thoughtworks.mvc.core.Controller;
 
 import java.lang.reflect.Method;
 

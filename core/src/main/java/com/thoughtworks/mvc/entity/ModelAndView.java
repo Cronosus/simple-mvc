@@ -1,4 +1,6 @@
-package com.thoughtworks.mvc.core;
+package com.thoughtworks.mvc.entity;
+
+import com.thoughtworks.mvc.view.View;
 
 import java.io.IOException;
 import java.io.PrintWriter;
