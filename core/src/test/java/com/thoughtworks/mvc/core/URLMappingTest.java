@@ -23,13 +23,10 @@ public class URLMappingTest {
 
     @Test
     public void should_map_url_action() throws NoSuchMethodException {
-
         ActionInfo actionInfo = mapping.get("/sample/user/show");
 
-        Method expectedMethod = UserController.class.getDeclaredMethod("show", new Class[]{String.class});
-
         assertThat((Class<UserController>) actionInfo.getControllerClass(), equalTo(UserController.class));
-        assertThat(actionInfo.getMethod(), equalTo(expectedMethod));
+        assertThat(actionInfo.getMethod().getName(), equalTo("show"));
     }
 
     @Test
@@ -43,7 +40,7 @@ public class URLMappingTest {
     @Test
     public void should_extract_required_simple_param() {
         ActionInfo actionInfo = mapping.get("/sample/user/show");
-        assertThat((Class<String>) actionInfo.getRequiredParam().getType(), equalTo(String.class));
+        assertThat((Class<Long>) actionInfo.getRequiredParam().getType(), equalTo(Long.class));
         assertThat(actionInfo.getRequiredParam().getName(), equalTo("id"));
     }
 

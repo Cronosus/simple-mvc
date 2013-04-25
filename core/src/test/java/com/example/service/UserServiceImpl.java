@@ -6,7 +6,7 @@ import com.thoughtworks.di.annotation.Component;
 @Component
 public class UserServiceImpl implements UserService {
     @Override
-    public User get(String id) {
-        return new User(id);
+    public User get(Long id) {
+        return new User(id, "default user", 0);
     }
 }

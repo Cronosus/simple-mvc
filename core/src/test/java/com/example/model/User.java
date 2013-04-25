@@ -2,13 +2,40 @@ package com.example.model;
 
 public class User {
 
-    private String id;
+    private Long id;
+    private String name;
+    private Integer age;
 
-    public String getId() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public User() {
+    }
+
+    public User(Long id, String name, Integer age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public User(String id) {
-        this.id = id;
+    public String getName() {
+        return name;
+    }
+
+    public Integer getAge() {
+        return age;
     }
 }

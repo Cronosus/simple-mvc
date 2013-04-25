@@ -55,4 +55,24 @@ public class Lang {
         }
         return buffer.toString();
     }
+
+    public static Object instanceFor(Class<?> clazz) {
+        Object instance = null;
+        try {
+            instance = clazz.newInstance();
+        } catch (Exception e) {
+            throw makeThrow("Create instance failed for class %s, error: %s", clazz.getCanonicalName(), stackTrace(e));
+        }
+        return instance;
+    }
+
+    public static boolean isPrimitive(Class<?> type) {
+        return type.equals(Integer.class) ||
+                type.equals(Long.class) ||
+                type.equals(Float.class) ||
+                type.equals(Double.class) ||
+                type.equals(String.class) ||
+                type.equals(Boolean.class) ||
+                type.equals(Character.class);
+    }
 }

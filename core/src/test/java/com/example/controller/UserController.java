@@ -28,7 +28,7 @@ public class UserController implements Controller {
     }
 
     @Path
-    public String show(@Param("id") String id) {
+    public String show(@Param("id") Long id) {
         User user = service.get(id);
         modelMap.put("user", user);
         return "user/show";

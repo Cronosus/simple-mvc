@@ -5,6 +5,7 @@ import com.thoughtworks.utils.Lang;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
 
 public class RequestHandlerResolver {
 
@@ -40,13 +41,51 @@ public class RequestHandlerResolver {
 
     private Object extractParam(HttpServletRequest request, ActionInfo actionInfo) {
         RequiredParam requiredParam = actionInfo.getRequiredParam();
-        Object param = null;
-        if (null != requiredParam) {
-            param = request.getParameter(requiredParam.getName());
+
+        if (null == requiredParam) {
+            return null;
+
         }
 
-        return param;
+        Object param = null;
+        String stringValue = request.getParameter(requiredParam.getName());
 
+        if (Lang.isPrimitive(requiredParam.getType())) {
+            param = typeConvert(stringValue, requiredParam.getType());
+        } else {
+            param = Lang.instanceFor(requiredParam.getType());
+            Field[] fields = requiredParam.getType().getDeclaredFields();
+
+            for (Field field : fields) {
+                String value = request.getParameter(field.getName());
+                if (null != value) {
+                    Object fieldValue = typeConvert(value, field.getType());
+                    try {
+                        field.setAccessible(true);
+                        field.set(param, fieldValue);
+                    } catch (Exception e) {
+                        Lang.makeThrow("Setting param failed. error: %s", Lang.stackTrace(e));
+                    }
+                }
+            }
+        }
+        return param;
     }
+
+    private Object typeConvert(String stringValue, Class<?> type) {
+        if (null == stringValue)
+            return null;
+        Object param;
+        if (type == Long.class) {
+            param = Long.parseLong(stringValue);
+        } else if (type == Integer.class) {
+            param = Integer.parseInt(stringValue);
+        } else {
+            param = stringValue;
+        }
+        System.out.println("Converted value: " + param);
+        return param;
+    }
+
 
 }

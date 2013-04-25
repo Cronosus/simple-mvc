@@ -96,20 +96,36 @@ public class RequestHandlerResolverTest {
         when(request.getMethod()).thenReturn("GET");
 
         RequestHandler requestHandler = resolver.resolve(request);
-        UserService service = ((UserController) requestHandler.getController()).getService();
-        assertThat(service, notNullValue());
+        assertThat(((UserController) requestHandler.getController()).getService(), notNullValue());
     }
 
+
     @Test
-    public void should_inject_required_param_on_handling_request() {
+    public void should_inject_simple_param_on_handling_request() {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/show");
         when(request.getMethod()).thenReturn("GET");
         when(request.getParameter("id")).thenReturn("1");
 
         RequestHandler requestHandler = resolver.resolve(request);
-        ModelAndView mv = requestHandler.handle();
-        assertThat(((User) mv.getModel().get("user")).getId(), equalTo("1"));
+        assertThat((Long) requestHandler.getParam(), equalTo(1L));
     }
+
+    @Test
+    public void should_inject_object_param_on_handling_request() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        when(request.getRequestURI()).thenReturn("/sample/user/create");
+        when(request.getMethod()).thenReturn("POST");
+        when(request.getParameter("name")).thenReturn("Doudou");
+        when(request.getParameter("age")).thenReturn("18");
+
+        RequestHandler requestHandler = resolver.resolve(request);
+        User user = (User) requestHandler.getParam();
+
+        assertThat(user, Matchers.notNullValue());
+        assertThat(user.getName(), equalTo("Doudou"));
+        assertThat(user.getAge(), equalTo(18));
+    }
+
 
 }

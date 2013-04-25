@@ -44,4 +44,8 @@ public class RequestHandler {
     public String getActionName() {
         return action.getName();
     }
+
+    public Object getParam() {
+        return param;
+    }
 }
