@@ -5,15 +5,19 @@ import com.thoughtworks.utils.Lang;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
 
-public class ComplexTypeConverter implements TypeConverter {
+public class ComplexTypeConverter extends TypeConverter {
+
+    public ComplexTypeConverter(Class<?> type) {
+        super(type);
+    }
 
     @Override
-    public Object convert(HttpServletRequest request, Class<?> type, String name) {
+    public Object convert(HttpServletRequest request, String name) {
         Object instance = Lang.instanceFor(type);
 
         for (Field field : type.getDeclaredFields()) {
 
-            Object fieldValue = new TheTypeConverter().convert(request, field.getType(), realParamName(name, field));
+            Object fieldValue = create(field.getType()).convert(request, realParamName(name, field));
             try {
                 field.setAccessible(true);
                 field.set(instance, fieldValue);

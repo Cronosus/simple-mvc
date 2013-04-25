@@ -1,7 +1,7 @@
 package com.thoughtworks.mvc.core;
 
 import com.thoughtworks.di.core.Injector;
-import com.thoughtworks.mvc.converter.TheTypeConverter;
+import com.thoughtworks.mvc.converter.TypeConverter;
 import com.thoughtworks.utils.Lang;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +45,7 @@ public class RequestHandlerResolver {
             return null;
         }
 
-        Object param = new TheTypeConverter().convert(request, requiredParam.getType(), requiredParam.getName());
+        Object param = TypeConverter.create(requiredParam.getType()).convert(request, requiredParam.getName());
         return param;
     }
 
