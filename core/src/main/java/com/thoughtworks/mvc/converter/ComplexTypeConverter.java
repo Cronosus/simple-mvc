@@ -16,16 +16,19 @@ public class ComplexTypeConverter extends TypeConverter {
         Object instance = Lang.instanceFor(type);
 
         for (Field field : type.getDeclaredFields()) {
-
-            Object fieldValue = create(field.getType()).convert(request, realParamName(name, field));
-            try {
-                field.setAccessible(true);
-                field.set(instance, fieldValue);
-            } catch (Exception e) {
-                throw Lang.makeThrow("Setting param failed. error: %s", Lang.stackTrace(e));
-            }
+            Object value = create(field.getType()).convert(request, realParamName(name, field));
+            injectFieldValue(instance, field, value);
         }
         return instance;
+    }
+
+    private void injectFieldValue(Object instance, Field field, Object fieldValue) {
+        try {
+            field.setAccessible(true);
+            field.set(instance, fieldValue);
+        } catch (Exception e) {
+            throw Lang.makeThrow("Setting param failed. error: %s", Lang.stackTrace(e));
+        }
     }
 
     private String realParamName(String name, Field field) {

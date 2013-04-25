@@ -17,6 +17,12 @@ public class PrimitiveTypeConverter extends TypeConverter {
             param = Long.parseLong(value);
         } else if (type == Integer.class) {
             param = Integer.parseInt(value);
+        } else if (type == Boolean.class) {
+            param = Boolean.parseBoolean(value);
+        } else if (type == Double.class) {
+            param = Double.parseDouble(value);
+        } else if (type == Float.class) {
+            param = Float.parseFloat(value);
         } else {
             param = value;
         }

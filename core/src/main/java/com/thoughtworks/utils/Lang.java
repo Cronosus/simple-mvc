@@ -72,7 +72,6 @@ public class Lang {
                 type.equals(Float.class) ||
                 type.equals(Double.class) ||
                 type.equals(String.class) ||
-                type.equals(Boolean.class) ||
-                type.equals(Character.class);
+                type.equals(Boolean.class);
     }
 }

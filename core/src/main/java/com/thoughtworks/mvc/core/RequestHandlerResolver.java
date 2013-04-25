@@ -39,14 +39,14 @@ public class RequestHandlerResolver {
     }
 
     private Object extractParam(HttpServletRequest request, ActionInfo actionInfo) {
+
         RequiredParam requiredParam = actionInfo.getRequiredParam();
 
         if (null == requiredParam) {
             return null;
         }
 
-        Object param = TypeConverter.create(requiredParam.getType()).convert(request, requiredParam.getName());
-        return param;
+        return TypeConverter.create(requiredParam.getType()).convert(request, requiredParam.getName());
     }
 
 }
