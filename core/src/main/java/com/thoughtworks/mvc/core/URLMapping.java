@@ -1,12 +1,10 @@
 package com.thoughtworks.mvc.core;
 
-import com.thoughtworks.di.utils.ClassUtil;
 import com.thoughtworks.mvc.annotation.Param;
 import com.thoughtworks.mvc.annotation.Path;
 import com.thoughtworks.mvc.entity.ActionInfo;
 import com.thoughtworks.mvc.entity.RequiredParam;
-import com.thoughtworks.utils.Lang;
-import com.thoughtworks.utils.StringUtils;
+import com.thoughtworks.simpleframework.util.StringUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -15,6 +13,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.thoughtworks.mvc.utils.MVCHelper.actionMethods;
+import static com.thoughtworks.mvc.utils.MVCHelper.isController;
+import static com.thoughtworks.simpleframework.util.Lang.getClassInfos;
+import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
 
 public class URLMapping {
 
@@ -31,12 +34,12 @@ public class URLMapping {
 
         URLMapping mapping = new URLMapping(contextPath);
 
-        Collection<Class> allClasses = ClassUtil.getClassInfos(packageName);
+        Collection<Class> allClasses = getClassInfos(packageName);
 
         for (Class<?> clazz : allClasses) {
-            if (Lang.isController(clazz)) {
+            if (isController(clazz)) {
                 Path modulePath = clazz.getAnnotation(Path.class);
-                for (Method method : Lang.actionMethods(clazz)) {
+                for (Method method : actionMethods(clazz)) {
                     Path actionPath = method.getAnnotation(Path.class);
                     mapping.add(clazz, method, actionPath, modulePath);
                 }
@@ -48,14 +51,14 @@ public class URLMapping {
     public ActionInfo get(String url) {
         Matcher matcher = urlPattern.matcher(url);
         if (!matcher.matches()) {
-            Lang.makeThrow("encountered an invalid url %s, look up failed", url);
+            makeThrow("encountered an invalid url %s, look up failed", url);
         }
 
         String controllerUri = matcher.group(1);
         String actionUri = matcher.group(2);
         ControllerMappingEntry entry = controllerMappingMap.get(controllerUri);
         if (null == entry) {
-            throw Lang.makeThrow("Can't find class for controller url: %s", controllerUri);
+            throw makeThrow("Can't find class for controller url: %s", controllerUri);
         }
 
         return entry.actionFor(actionUri);
@@ -110,7 +113,7 @@ public class URLMapping {
             if (paramTypes.length == 1) {
                 paramType = paramTypes[0];
                 if (paramAnnotations[0].length == 0) {
-                    throw Lang.makeThrow("Parameter must associated with annotation");
+                    throw makeThrow("Parameter must associated with annotation");
                 }
                 name = ((Param) paramAnnotations[0][0]).value();
             }

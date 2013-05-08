@@ -1,14 +1,15 @@
 package com.thoughtworks.mvc.core;
 
-import com.thoughtworks.di.core.Injector;
 import com.thoughtworks.mvc.entity.ModelAndView;
-import com.thoughtworks.utils.Lang;
+import com.thoughtworks.simpleframework.di.core.Injector;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
 
 public class DispatchServlet extends HttpServlet {
 
@@ -25,11 +26,11 @@ public class DispatchServlet extends HttpServlet {
 
 
         if (null == controllerPackageName || null == servicePackageName) {
-            throw Lang.makeThrow("module name can not be empty");
+            throw makeThrow("module name can not be empty");
         }
 
         if (null == templatePath) {
-            throw Lang.makeThrow("template can not be empty");
+            throw makeThrow("template can not be empty");
         }
 
         String realTemplatePath = config.getServletContext().getRealPath(templatePath);

@@ -1,10 +1,12 @@
-package com.thoughtworks.main;
+package com.thoughtworks.mvc.main;
 
-import com.thoughtworks.utils.Lang;
+import com.thoughtworks.mvc.utils.MVCHelper;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 import java.io.File;
+
+import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
 
 public class JettyLauncher {
 
@@ -19,7 +21,7 @@ public class JettyLauncher {
             server.start();
         } catch (Exception ex) {
             stop();
-            throw Lang.makeThrow("start server failed %s", ex.getMessage());
+            throw makeThrow("start server failed %s", ex.getMessage());
         }
     }
 
@@ -27,7 +29,7 @@ public class JettyLauncher {
         try {
             server.stop();
         } catch (Exception e) {
-            Lang.makeThrow("Stop server failed");
+            makeThrow("Stop server failed");
         }
     }
 }

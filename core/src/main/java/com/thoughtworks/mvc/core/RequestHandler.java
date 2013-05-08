@@ -3,9 +3,12 @@ package com.thoughtworks.mvc.core;
 import com.thoughtworks.mvc.entity.ModelAndView;
 import com.thoughtworks.mvc.view.View;
 import com.thoughtworks.mvc.view.ViewResolver;
-import com.thoughtworks.utils.Lang;
+import com.thoughtworks.mvc.utils.MVCHelper;
 
 import java.lang.reflect.Method;
+
+import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
+import static com.thoughtworks.simpleframework.util.Lang.stackTrace;
 
 public class RequestHandler {
     private final Object param;
@@ -33,7 +36,7 @@ public class RequestHandler {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            throw Lang.makeThrow("Invoking action failed %s", Lang.stackTrace(e));
+            throw makeThrow("Invoking action failed %s", stackTrace(e));
         }
         View view = viewResolver.resolve(viewName);
 

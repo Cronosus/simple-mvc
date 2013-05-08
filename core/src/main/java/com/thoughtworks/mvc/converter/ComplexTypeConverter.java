@@ -1,9 +1,13 @@
 package com.thoughtworks.mvc.converter;
 
-import com.thoughtworks.utils.Lang;
+import com.thoughtworks.mvc.utils.MVCHelper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
+
+import static com.thoughtworks.simpleframework.util.Lang.instanceFor;
+import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
+import static com.thoughtworks.simpleframework.util.Lang.stackTrace;
 
 public class ComplexTypeConverter extends TypeConverter {
 
@@ -13,7 +17,7 @@ public class ComplexTypeConverter extends TypeConverter {
 
     @Override
     public Object convert(HttpServletRequest request, String name) {
-        Object instance = Lang.instanceFor(type);
+        Object instance = instanceFor(type);
 
         for (Field field : type.getDeclaredFields()) {
             Object value = create(field.getType()).convert(request, realParamName(name, field));
@@ -27,9 +31,10 @@ public class ComplexTypeConverter extends TypeConverter {
             field.setAccessible(true);
             field.set(instance, fieldValue);
         } catch (Exception e) {
-            throw Lang.makeThrow("Setting param failed. error: %s", Lang.stackTrace(e));
+            throw makeThrow("Setting param failed. error: %s", stackTrace(e));
         }
     }
+
 
     private String realParamName(String name, Field field) {
         return name == null ? field.getName() : name + "." + field.getName();

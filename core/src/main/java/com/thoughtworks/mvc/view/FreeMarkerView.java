@@ -1,6 +1,6 @@
 package com.thoughtworks.mvc.view;
 
-import com.thoughtworks.utils.Lang;
+import com.thoughtworks.mvc.utils.MVCHelper;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -8,6 +8,8 @@ import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Map;
+
+import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
 
 public class FreeMarkerView implements View {
 
@@ -25,7 +27,7 @@ public class FreeMarkerView implements View {
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
-            throw Lang.makeThrow("render view error %s", e.getMessage());
+            throw makeThrow("render view error %s", e.getMessage());
         }
     }
 

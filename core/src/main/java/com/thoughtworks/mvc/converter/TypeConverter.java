@@ -1,8 +1,8 @@
 package com.thoughtworks.mvc.converter;
 
-import com.thoughtworks.utils.Lang;
-
 import javax.servlet.http.HttpServletRequest;
+
+import static com.thoughtworks.simpleframework.util.Lang.isPrimitive;
 
 public abstract class TypeConverter {
 
@@ -20,7 +20,7 @@ public abstract class TypeConverter {
 
         TypeConverter typeConverter;
 
-        if (Lang.isPrimitive(type)) {
+        if (isPrimitive(type)) {
             typeConverter = new PrimitiveTypeConverter(type);
 
         } else {

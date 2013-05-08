@@ -2,24 +2,19 @@ package com.thoughtworks.mvc.core;
 
 import com.example.controller.UserController;
 import com.example.model.User;
-import com.example.service.UserService;
-import com.thoughtworks.di.core.Injector;
+import com.thoughtworks.simpleframework.di.core.Injector;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.IOException;
 
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.notNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

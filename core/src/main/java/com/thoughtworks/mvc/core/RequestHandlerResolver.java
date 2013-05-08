@@ -1,14 +1,15 @@
 package com.thoughtworks.mvc.core;
 
-import com.thoughtworks.di.core.Injector;
 import com.thoughtworks.mvc.converter.TypeConverter;
 import com.thoughtworks.mvc.entity.ActionInfo;
 import com.thoughtworks.mvc.entity.RequiredParam;
 import com.thoughtworks.mvc.view.FreeMarkerViewResolver;
 import com.thoughtworks.mvc.view.ViewResolver;
-import com.thoughtworks.utils.Lang;
+import com.thoughtworks.simpleframework.di.core.Injector;
 
 import javax.servlet.http.HttpServletRequest;
+
+import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
 
 public class RequestHandlerResolver {
 
@@ -31,7 +32,7 @@ public class RequestHandlerResolver {
         ActionInfo actionInfo = urlMapping.get(request.getRequestURI());
 
         if (null == actionInfo) {
-            throw Lang.makeThrow("can not find action for requested URI %s.", request.getRequestURI());
+            throw makeThrow("can not find action for requested URI %s.", request.getRequestURI());
         }
 
         Controller controller = (Controller) container.get(actionInfo.getControllerClass());

@@ -1,11 +1,14 @@
 package com.thoughtworks.mvc.view;
 
-import com.thoughtworks.utils.Lang;
+import com.thoughtworks.mvc.utils.MVCHelper;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 
 import java.io.File;
 import java.io.IOException;
+
+import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
+import static com.thoughtworks.simpleframework.util.Lang.stackTrace;
 
 public class FreeMarkerViewResolver implements ViewResolver {
     private Configuration configuration;
@@ -19,7 +22,7 @@ public class FreeMarkerViewResolver implements ViewResolver {
         try {
             configuration.setDirectoryForTemplateLoading(new File(templatePath));
         } catch (IOException e) {
-            throw Lang.makeThrow("configure FreeMarker failed, %s", Lang.stackTrace(e));
+            throw makeThrow("configure FreeMarker failed, %s", stackTrace(e));
         }
         configuration.setObjectWrapper(new DefaultObjectWrapper());
         return configuration;
