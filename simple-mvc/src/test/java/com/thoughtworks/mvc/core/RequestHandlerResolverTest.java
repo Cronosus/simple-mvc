@@ -1,6 +1,7 @@
 package com.thoughtworks.mvc.core;
 
 import com.example.controller.UserController;
+import com.example.model.Pet;
 import com.example.model.User;
 import com.thoughtworks.simpleframework.di.core.Injector;
 import org.hamcrest.Matchers;
@@ -140,6 +141,27 @@ public class RequestHandlerResolverTest {
         assertThat(user.getAge(), equalTo(18));
         assertThat(user.getPet().getName(), equalTo("Doudou Jr"));
         assertThat(user.getPet().getCategory(), equalTo("Dog"));
+    }
+
+    @Test
+    public void should_inject_list_field_on_handling_request() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        when(request.getRequestURI()).thenReturn("/sample/user/create");
+        when(request.getMethod()).thenReturn("POST");
+        when(request.getParameter("user.name")).thenReturn("Doudou");
+        when(request.getParameter("user.age")).thenReturn("18");
+        when(request.getParameter("user.pets[0].name")).thenReturn("Doudou Jr");
+        when(request.getParameter("user.pets[0].category")).thenReturn("Dog");
+
+        RequestHandler requestHandler = resolver.resolve(request);
+        User user = (User) requestHandler.getParam();
+        Pet pet = user.getPets().get(0);
+
+        assertThat(user, Matchers.notNullValue());
+        assertThat(user.getName(), equalTo("Doudou"));
+        assertThat(user.getAge(), equalTo(18));
+        assertThat(pet.getName(), equalTo("Doudou Jr"));
+        assertThat(pet.getCategory(), equalTo("Dog"));
     }
 
 

@@ -1,11 +1,15 @@
 package com.example.model;
 
+import java.util.List;
+
 public class User {
 
     private Long id;
     private String name;
     private Integer age;
     private Pet pet;
+
+    private List<Pet> pets;
 
     public void setId(Long id) {
         this.id = id;
@@ -42,5 +46,13 @@ public class User {
 
     public Pet getPet() {
         return pet;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
     }
 }

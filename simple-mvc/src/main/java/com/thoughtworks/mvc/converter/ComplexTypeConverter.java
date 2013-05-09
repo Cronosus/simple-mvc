@@ -1,13 +1,9 @@
 package com.thoughtworks.mvc.converter;
 
-import com.thoughtworks.mvc.utils.MVCHelper;
-
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
 
-import static com.thoughtworks.simpleframework.util.Lang.instanceFor;
-import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
-import static com.thoughtworks.simpleframework.util.Lang.stackTrace;
+import static com.thoughtworks.simpleframework.util.Lang.*;
 
 public class ComplexTypeConverter extends TypeConverter {
 
@@ -20,7 +16,7 @@ public class ComplexTypeConverter extends TypeConverter {
         Object instance = instanceFor(type);
 
         for (Field field : type.getDeclaredFields()) {
-            Object value = create(field.getType()).convert(request, realParamName(name, field));
+            Object value = create(field.getGenericType()).convert(request, realParamName(name, field));
             injectFieldValue(instance, field, value);
         }
         return instance;
