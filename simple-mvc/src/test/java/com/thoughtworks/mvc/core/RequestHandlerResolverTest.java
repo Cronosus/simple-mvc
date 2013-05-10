@@ -150,8 +150,8 @@ public class RequestHandlerResolverTest {
         when(request.getMethod()).thenReturn("POST");
         when(request.getParameter("user.name")).thenReturn("Doudou");
         when(request.getParameter("user.age")).thenReturn("18");
-        when(request.getParameter("user.pets[0].name")).thenReturn("Doudou Jr");
-        when(request.getParameter("user.pets[0].category")).thenReturn("Dog");
+        when(request.getParameter("user.pets[].name")).thenReturn("Doudou Jr");
+        when(request.getParameter("user.pets[].category")).thenReturn("Dog");
 
         RequestHandler requestHandler = resolver.resolve(request);
         User user = (User) requestHandler.getParam();

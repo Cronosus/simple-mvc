@@ -9,7 +9,10 @@ import com.thoughtworks.simpleframework.di.core.Injector;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.lang.reflect.Field;
+
 import static com.thoughtworks.simpleframework.util.Lang.makeThrow;
+import static com.thoughtworks.simpleframework.util.Lang.stackTrace;
 
 public class RequestHandlerResolver {
 
@@ -27,7 +30,7 @@ public class RequestHandlerResolver {
         return new RequestHandlerResolver(container, packageName, contextPath, templatePath);
     }
 
-    public RequestHandler resolve(HttpServletRequest request) throws NoSuchFieldException {
+    public RequestHandler resolve(HttpServletRequest request) {
 
         ActionInfo actionInfo = urlMapping.get(request.getRequestURI());
 
@@ -43,7 +46,7 @@ public class RequestHandlerResolver {
                 actionInfo.getMethod(), param);
     }
 
-    private Object extractParam(HttpServletRequest request, ActionInfo actionInfo) throws NoSuchFieldException {
+    private Object extractParam(HttpServletRequest request, ActionInfo actionInfo) {
 
         RequiredParam requiredParam = actionInfo.getRequiredParam();
 
@@ -51,7 +54,17 @@ public class RequestHandlerResolver {
             return null;
         }
 
-        return TypeConverter.create(requiredParam.getType().getField(requiredParam.getName())).convert(request, requiredParam.getName());
+        return TypeConverter.create(requiredParam.getType()).convert(request, requiredParam.getName());
+    }
+
+    private Field getField(RequiredParam requiredParam) {
+        try {
+            return requiredParam.getType().getField(requiredParam.getName());
+        } catch (NoSuchFieldException e) {
+            System.out.println(requiredParam.getType());
+            e.printStackTrace();
+            throw makeThrow("failed to get field, error: %s", stackTrace(e));
+        }
     }
 
 }

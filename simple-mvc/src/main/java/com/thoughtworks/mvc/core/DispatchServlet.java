@@ -42,11 +42,7 @@ public class DispatchServlet extends HttpServlet {
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
         RequestHandler requestHandler = null;
-        try {
-            requestHandler = requestRequestHandlerResolver.resolve(request);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
+        requestHandler = requestRequestHandlerResolver.resolve(request);
         ModelAndView modelAndView = requestHandler.handle();
         modelAndView.render(response.getWriter());
     }
