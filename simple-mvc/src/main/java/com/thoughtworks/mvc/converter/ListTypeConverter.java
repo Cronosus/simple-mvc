@@ -23,8 +23,6 @@ public class ListTypeConverter extends TypeConverter {
             Object value = create(field).convert(request, realParamName(name, field));
 
             injectFieldValue(instance, field, value);
-            System.out.println(instance);
-
         }
         obj.add(instance);
         return obj;

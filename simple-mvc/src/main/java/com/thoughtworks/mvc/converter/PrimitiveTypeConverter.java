@@ -9,9 +9,7 @@ public class PrimitiveTypeConverter extends TypeConverter {
     }
 
     public Object convert(HttpServletRequest request, String name) {
-        System.out.println(name);
         String value = request.getParameter(name);
-        System.out.println(name + "    " + value);
         if (null == value)
             return null;
         Object param;

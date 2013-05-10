@@ -61,7 +61,6 @@ public class RequestHandlerResolver {
         try {
             return requiredParam.getType().getField(requiredParam.getName());
         } catch (NoSuchFieldException e) {
-            System.out.println(requiredParam.getType());
             e.printStackTrace();
             throw makeThrow("failed to get field, error: %s", stackTrace(e));
         }

@@ -45,8 +45,6 @@ public abstract class TypeConverter {
             Type fieldType = field.getGenericType();
             Class itemClass = (Class) ((ParameterizedType) fieldType).getActualTypeArguments()[0];
 
-            System.out.println("i: " + itemClass);
-
             typeConverter = new ListTypeConverter(itemClass);
         } else {
             typeConverter = converterFor(field.getType());
