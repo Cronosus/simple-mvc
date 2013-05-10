@@ -1,7 +1,5 @@
 package com.house.model;
 
-import com.thoughtworks.mvc.annotation.Type;
-
 import java.util.List;
 
 public class House {
@@ -14,7 +12,6 @@ public class House {
 
     private String name;
 
-    @Type(Door.class)
     private List<Door> door;
 
     public House() {
