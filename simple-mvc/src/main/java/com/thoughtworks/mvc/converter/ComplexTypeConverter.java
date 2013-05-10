@@ -16,7 +16,8 @@ public class ComplexTypeConverter extends TypeConverter {
         Object instance = instanceFor(type);
 
         for (Field field : type.getDeclaredFields()) {
-            Object value = create(field.getGenericType()).convert(request, realParamName(name, field));
+            Object value = create(field).convert(request, realParamName(name, field));
+
             injectFieldValue(instance, field, value);
         }
         return instance;

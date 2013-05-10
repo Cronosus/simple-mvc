@@ -1,5 +1,9 @@
 package com.house.model;
 
+import com.thoughtworks.mvc.annotation.Type;
+
+import java.util.List;
+
 public class House {
     private String id;
 
@@ -8,10 +12,10 @@ public class House {
         this.name = name;
     }
 
-
     private String name;
 
-    private Door door;
+    @Type(Door.class)
+    private List<Door> door;
 
     public House() {
     }
@@ -20,7 +24,7 @@ public class House {
         this.id = id;
     }
 
-    public Door getDoor() {
+    public List<Door> getDoor() {
         return door;
     }
 

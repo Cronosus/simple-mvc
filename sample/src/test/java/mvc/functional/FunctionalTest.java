@@ -13,7 +13,7 @@ public class FunctionalTest {
 
     @Before
     public void setUp() {
-        JettyLauncher.start("src/main/webapp", "/sample");
+        JettyLauncher.start("sample/src/main/webapp", "/sample");
         driver = new ChromeDriver();
     }
 

@@ -34,7 +34,7 @@ public class RequestHandlerResolverTest {
     }
 
     @Test
-    public void should_find_controller_by_collection_url() {
+    public void should_find_controller_by_collection_url() throws NoSuchFieldException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/index");
         when(request.getMethod()).thenReturn("GET");
@@ -47,7 +47,7 @@ public class RequestHandlerResolverTest {
 
     //REST-ful url mapping
     @Test
-    public void should_find_controller_by_member_url() {
+    public void should_find_controller_by_member_url() throws NoSuchFieldException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/show");
         when(request.getMethod()).thenReturn("GET");
@@ -59,7 +59,7 @@ public class RequestHandlerResolverTest {
     }
 
     @Test
-    public void should_dispatch_get_by_id_request_to_show_action() throws ServletException, IOException {
+    public void should_dispatch_get_by_id_request_to_show_action() throws ServletException, IOException, NoSuchFieldException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/show");
         when(request.getMethod()).thenReturn("GET");
@@ -73,7 +73,7 @@ public class RequestHandlerResolverTest {
     }
 
     @Test
-    public void should_dispatch_new_request_to_new_action() throws ServletException, IOException {
+    public void should_dispatch_new_request_to_new_action() throws ServletException, IOException, NoSuchFieldException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/new");
         when(request.getMethod()).thenReturn("GET");
@@ -86,7 +86,7 @@ public class RequestHandlerResolverTest {
     }
 
     @Test
-    public void should_inject_required_service_to_controller() {
+    public void should_inject_required_service_to_controller() throws NoSuchFieldException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/new");
         when(request.getMethod()).thenReturn("GET");
@@ -97,7 +97,7 @@ public class RequestHandlerResolverTest {
 
 
     @Test
-    public void should_inject_simple_param_on_handling_request() {
+    public void should_inject_simple_param_on_handling_request() throws NoSuchFieldException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/show");
         when(request.getMethod()).thenReturn("GET");
@@ -108,7 +108,7 @@ public class RequestHandlerResolverTest {
     }
 
     @Test
-    public void should_inject_object_param_on_handling_request() {
+    public void should_inject_object_param_on_handling_request() throws NoSuchFieldException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/create");
         when(request.getMethod()).thenReturn("POST");
@@ -124,7 +124,7 @@ public class RequestHandlerResolverTest {
     }
 
     @Test
-    public void should_inject_nested_param_on_handling_request() {
+    public void should_inject_nested_param_on_handling_request() throws NoSuchFieldException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/sample/user/create");
         when(request.getMethod()).thenReturn("POST");

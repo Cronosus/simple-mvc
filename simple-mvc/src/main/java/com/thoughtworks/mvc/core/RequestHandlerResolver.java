@@ -27,7 +27,7 @@ public class RequestHandlerResolver {
         return new RequestHandlerResolver(container, packageName, contextPath, templatePath);
     }
 
-    public RequestHandler resolve(HttpServletRequest request) {
+    public RequestHandler resolve(HttpServletRequest request) throws NoSuchFieldException {
 
         ActionInfo actionInfo = urlMapping.get(request.getRequestURI());
 
@@ -43,7 +43,7 @@ public class RequestHandlerResolver {
                 actionInfo.getMethod(), param);
     }
 
-    private Object extractParam(HttpServletRequest request, ActionInfo actionInfo) {
+    private Object extractParam(HttpServletRequest request, ActionInfo actionInfo) throws NoSuchFieldException {
 
         RequiredParam requiredParam = actionInfo.getRequiredParam();
 
@@ -51,7 +51,7 @@ public class RequestHandlerResolver {
             return null;
         }
 
-        return TypeConverter.create(requiredParam.getType()).convert(request, requiredParam.getName());
+        return TypeConverter.create(requiredParam.getType().getField(requiredParam.getName())).convert(request, requiredParam.getName());
     }
 
 }
